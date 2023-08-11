@@ -38,7 +38,7 @@ public class main {
 		System.out.println("혜원식당에 오신것을 환영합니다!" + "\n");
 
 		while (true) {
-			System.out.println("**** 메뉴를 선택하세요 ****");
+			System.out.println("\n**** 메뉴를 선택하세요 ****");
 			System.out.println("1. 돈까스");
 			System.out.println("2.치즈 돈까스");
 			System.out.println("3.치킨까스");
@@ -95,7 +95,7 @@ public class main {
 					
 					
 					break;
-/*
+
 				case 2:
 					System.out.println("====== 전체 학생 출력 ======");
 //					print(name, id, dept, ph);
@@ -117,7 +117,7 @@ public class main {
 					System.out.println("[학생 정보를 수정합니다.]");
 					System.out.print("학번을 입력하십시오. : ");
 //					modify(sc, sc.nextInt(), name, id, dept, ph);
-					break;*/
+					break;
 
 				default:
 					System.out.println("[프로그램을 종료합니다.]");
