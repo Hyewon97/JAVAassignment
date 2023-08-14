@@ -92,21 +92,21 @@ public class main {
 					// 수량을 임시 변수로 입력 받음
 					dontmp = inputData.nextInt();
 
-					if (dontmp + kzdon > max) { // 돈까스랑 치즈돈까스의 합의 예상값이 5보다 크면
+					if (dontmp + kzdon + don > max) { // 주문하려는 수량 + (기존의 돈까스의 수량 + 치돈의 수량)의 합의 예상값이 5보다 크면
 						// 다시 선택하라는 문구와 초기 화면으로 돌아감
-						System.out.printf("\n최대 주문 갯수는 %d개 입니다.\n" + "다시 선택해주세요\n" + "초기화면으로 돌아갑니다.\n", max - kzdon);
+						System.out.printf("\n최대 주문 갯수는 %d개 입니다.\n" + "다시 선택해주세요\n" + "초기화면으로 돌아갑니다.\n", (max - (kzdon+don)));
 						break;
-					} else if (dontmp + kzdon <= max) { // 돈까스랑 치즈 돈까스의 합이 5 이하면
+					} else if (dontmp + (kzdon + don) <= max) { // 입력받은 수량 + (기존의 돈까스 + 치돈의 수량)이 5 이하면 
 						// 갯수 입력 받아서 저장하고 확인
-						don += dontmp;
+						don += dontmp; // 기존의 돈까스에 수량을 늘리고
 						
 						// 현재 주문중인 돈까스의 수
-						donOrder += dontmp;
+						donOrder += dontmp; // 현재 주문중인 값을 저장한다.
 						
-						System.out.println("=============================================="+donOrder);
+						System.out.println("=============================================="+donOrder); // 현재 주문중인 값 확인
 						
 						//totalCost += totalCost + (don * donCost); // 총 금액 계산
-						System.out.println("변경된 돈까스 갯수 " + don);
+						System.out.println("변경된 돈까스 갯수 " + don); 
 
 						// 가격 확인... 나중에 지우기
 //						System.out.printf("돈까스 금액 확인 : %d원입니다.\n", totalCost);
@@ -126,29 +126,30 @@ public class main {
 					System.out.printf("\n치즈 돈까스 현재 %d개 남았습니다.\n", max - (don + kzdon)); 
 
 					// 품절이면 초기화면으로 돌아감
-					if (max - (don + kzdon) == 0) {
+					if (max - (don + kzdon) == 0) { // 돈까스와 치즈 돈까스의 합이 0이면 품절 표시
 						System.out.printf("\n품절입니다. 초기화면으로 돌아갑니다.\n");
 						break;
 					}
 
-					System.out.printf("\n변경 전 치즈 돈까스 갯수 %d\n", kzdon); // 확인용
-					System.out.printf("\n갯수를 입력해주세요.\n가능한 최대 갯수 %d개\n", max - (don + kzdon));
+					System.out.printf("\n변경 전 치즈 돈까스 갯수 %d\n", kzdon); // 확인용. 기존 치즈 돈까스 갯수 확인
+					System.out.printf("\n갯수를 입력해주세요.\n가능한 최대 갯수 %d개\n", max - (don + kzdon)); // 주문 가능한 수량 보여주기
 //					
 					// 수량을 임시 변수로 입력 받음
 					kzdontmp = inputData.nextInt();
 
-					if (kzdontmp + don > max) { // 돈까스랑 치즈돈까스의 합의 예상값이 5보다 크면
+					// 여기 조건문이 안들어가는 느낌.. 그러고 보니까 치즈 돈까스인데 안들어가네
+					if (kzdontmp + (don+kzdon) > max) { // 현재 주문중인 치즈 돈까스 + (돈까스의 치즈 돈까의 합)이 최대값 보다 큰 경우
 						// 다시 선택하라는 문구와 초기 화면으로 돌아감
-						System.out.printf("\n최대 주문 갯수는 %d개 입니다.\n" + "다시 선택해주세요\n" + "초기화면으로 돌아갑니다.\n", max - kzdon);
+						System.out.printf("\n최대 주문 갯수는 %d개 입니다.\n" + "다시 선택해주세요\n" + "초기화면으로 돌아갑니다.\n", max - (don + kzdon)); // 주문 가능한 최대 수량 보여주기
 						break;
-					} else if (kzdontmp + kzdon <= max) { // 돈까스랑 치즈 돈까스의 합이 5 이하면
+					} else if (kzdontmp + (don+kzdon) <= max) { // 현재 주문중인 치즈 돈까스 + (기존의 돈까스 + 치즈 돈까의)합이 5 이하면 값 저장
 						// 갯수 입력 받아서 저장하고 확인
-						kzdon += kzdontmp;
-						kzdonOrder += kzdontmp;
+						kzdon += kzdontmp; // 기존의 치즈 돈까스의 수량을 늘리고
+						kzdonOrder += kzdontmp; // 현재 주문중인 치즈 돈까스의 수량을 저장함
 						
-						System.out.println("=============================================="+kzdonOrder);
+						System.out.println("=============================================="+kzdonOrder); // 현재 주문중인 값 확인
 //						totalCost += totalCost + (kzdontmp * kzdonCost); // 총 금액 계산
-						System.out.println("변경된 치즈 돈까스 갯수 " + kzdontmp);
+						System.out.println("현재 주문중인 치즈 돈까스 갯수 " + kzdontmp);
 
 						// 가격 확인... 나중에 지우기
 //						System.out.printf("치즈 돈까스 금액 확인 : %d원입니다.\n", totalCost);
@@ -177,11 +178,11 @@ public class main {
 					// 수량을 임시 변수로 입력 받음
 					chdontmp = inputData.nextInt();
 
-					if (chdon > max) { // 돈까스랑 치즈돈까스의 합의 예상값이 5보다 크면
+					if (chdon + chdontmp > max) { // 현재 주문중인 치킨까스의 수량 + 기존의 치킨까스의 수량이 5보다 크면
 						// 다시 선택하라는 문구와 초기 화면으로 돌아감
 						System.out.printf("\n최대 주문 갯수는 %d개 입니다.\n" + "다시 선택해주세요\n" + "초기화면으로 돌아갑니다.\n", max - chdon);
 						break;
-					} else if (chdon <= max) { // 돈까스랑 치즈 돈까스의 합이 5 이하면
+					} else if (chdon + chdontmp <= max) { // 현재 주문중인 치킨까스의 수량과 기존의 수량이 최대수량보다 작으면 값 저장하기
 						// 갯수 입력 받아서 저장하고 확인
 						chdon += chdontmp;
 						
@@ -202,10 +203,47 @@ public class main {
 					
 					break;
 
-				case 4:
-					System.out.println("[학생 정보를 수정합니다.]");
-					System.out.print("학번을 입력하십시오. : ");
-//					modify(sc, sc.nextInt(), name, id, dept, ph);
+				case 4: // 콜라를 선택한 경우
+					sodatmp = 0; // 임시 변수 초기화
+
+					System.out.println("====== 콜라 ======");
+					// 남은 수량 보여주기
+					System.out.printf("\n콜라 현재 %d개 남았습니다.\n", max - soda); 
+
+					// 품절이면 초기화면으로 돌아감
+					if (max - soda == 0) {
+						System.out.printf("\n품절입니다. 초기화면으로 돌아갑니다.\n");
+						break;
+					}
+
+					System.out.printf("\n변경 전 콜라 갯수 %d\n", soda); // 확인용
+					System.out.printf("\n갯수를 입력해주세요.\n가능한 최대 갯수 %d개\n", max -soda);
+//					
+					// 수량을 임시 변수로 입력 받음
+					sodatmp = inputData.nextInt();
+
+					if (soda + sodatmp > max) { // 현재 주문중인 콜라의 수량 + 기존의 콜라의 수량이 5보다 크면
+						// 다시 선택하라는 문구와 초기 화면으로 돌아감
+						System.out.printf("\n최대 주문 갯수는 %d개 입니다.\n" + "다시 선택해주세요\n" + "초기화면으로 돌아갑니다.\n", max - soda);
+						break;
+					} else if (soda + sodatmp <= max) { // 현재 주문중인 콜라의 수량과 기존의 수량이 최대수량보다 작으면 값 저장하기
+						// 갯수 입력 받아서 저장하고 확인
+						soda += sodatmp;
+						
+						// 현재 주문중인 콜라의 수
+						sodaOrder += sodatmp;
+						
+						System.out.println("==============================================" + sodaOrder);
+						
+						//totalCost += totalCost + (don * donCost); // 총 금액 계산
+						System.out.println("변경된 콜라 갯수 " + soda);
+
+						// 가격 확인... 나중에 지우기
+//						System.out.printf("돈까스 금액 확인 : %d원입니다.\n", totalCost);
+
+					}
+					System.out.println("=============================최종 콜라 갯수 " + soda);
+					
 					break;
 
 				case 5:
