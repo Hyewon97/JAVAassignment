@@ -2,20 +2,6 @@ package kioskk;
 
 import java.util.Scanner;
 
-/*
-객체지향 프로그램
-
-절차
-1. 메뉴 입력 
-2. 총금액 알람
-3. 번호 배정
-
-조건
-메뉴 : 돈까스, 치즈 돈까스, 치킨까스, 콜라
-주문 가능 개수는 돼지, 닭 각각 5개. > 돈까스, 치즈돈까스는 총 5개
-메뉴가 다 팔리면 메뉴는 품절표시가 되어야 함
-*/
-
 public class main {
 	public static void main(String[] args) {
 
@@ -37,6 +23,9 @@ public class main {
 		int[] foodCost = { 8000, 10000, 7000, 2000 };
 
 		int totalCost = 0; // 가격 변수. 0으로 초기화
+
+		// 번호 배정을 위한 변수
+		int orderNum = 0; // 0으로 번호 초기화
 
 		System.out.println("혜원식당에 오신것을 환영합니다!" + "\n");
 
@@ -77,14 +66,61 @@ public class main {
 				case 5:
 					System.out.println("============ 주문확인 ============");
 
+					// 가격 0으로 초기화
+					totalCost = 0;
+
+					// 사용자의 주문 여부를 입력받기 위한 스캐너 선언
+					Scanner StrInput = new Scanner(System.in);
+
 					// 주문한 음식 확인하는 코드
 					for (int j = 0; j < 4; j++) {
 						System.out.printf("%s %d개, ", foodname[j], nowOrder[j]);
 						totalCost = totalCost + (nowOrder[j] * foodCost[j]);
 					}
+
 					System.out.printf("선택 되었습니다.\n");
 					System.out.printf("총 금액은 %d입니다.\n", totalCost);
 
+					// 주문 하시겠습니까? y -> 번호 배정, n -> 주문초기화? (y-> nowOrder 0으로 초기화, n->선택 화면으로 출력)
+					System.out.println("주문 하시겠습니까? y/n");
+
+					char lastCheck = StrInput.next().charAt(0);
+
+					// 입력 받은 값이 y 또는 n이 아니면
+					if (!(lastCheck == 'y' || lastCheck == 'n'))
+						System.out.println("잘못된 문자입니다. 다시 입력해주세요\n" + "초기 화면으로 돌아갑니다.");
+
+					if (lastCheck == 'y') {
+						orderNum++;
+						System.out.printf("주문 되었습니다. 주문번호는 %d 번입니다.", orderNum);
+
+						// 현재 주문중인 갯수 초기화
+						for (int j = 0; j < 4; j++) {
+							nowOrder[j] = 0;
+						}
+					} else if (lastCheck == 'n') {
+						// 주문 초기화 여부 묻기
+						System.out.println("주문을 취소하시겠습니까? y/n\n" + "y 선택시 모든 주문은 초기화됩니다.");
+
+						// 입력 값 받기
+						lastCheck = StrInput.next().charAt(0);
+
+						// 현재 주문중인 모든 주문을 0으로 초기화
+						if (lastCheck == 'y') {
+							for (int j = 0; j < 4; j++) {
+								oldOrder[j] = oldOrder[j] - nowOrder[j];
+							}
+							// 현재 주문중인 수량을 0으로 초기화
+							for (int j = 0; j < 4; j++) {
+								nowOrder[j] = 0;
+							}
+
+						} else if (lastCheck == 'n') {
+							System.out.println("초기 화면으로 돌아갑니다.");
+
+						}
+
+					}
 					break;
 
 				default:

@@ -1,0 +1,29 @@
+package test2;
+
+public class Drink implements MenuItem {
+	private String name;
+	private int price;
+	private int maxQuantity; // 추가: 최대 주문 가능 수량
+
+	public Drink(String name, int price, int maxQuantity) {
+		this.name = name;
+		this.price = price;
+		this.maxQuantity = maxQuantity;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public int getPrice() {
+		return price;
+	}
+
+	@Override
+	public int getMaxQuantity() {
+		return maxQuantity;
+	}
+
+}
