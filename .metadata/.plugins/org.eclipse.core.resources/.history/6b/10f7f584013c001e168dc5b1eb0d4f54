@@ -1,0 +1,52 @@
+package test2;
+
+public class Food implements MenuItem {
+    private String name;
+    private int price;
+    private int maxQuantity; // 추가: 최대 주문 가능 수량
+
+    public Food(String name, int price, int maxQuantity) {
+        this.name = name;
+        this.price = price;
+        this.maxQuantity = maxQuantity;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public String getMenuType() {
+        return "음식";
+    }
+
+    @Override
+    public int getMaxQuantity() {
+        return maxQuantity;
+    }
+
+	@Override
+	public String getMenuItemName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getQuantity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int calculateTotalCost() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}
+

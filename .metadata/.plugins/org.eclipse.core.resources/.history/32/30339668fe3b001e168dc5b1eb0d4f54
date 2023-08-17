@@ -1,0 +1,14 @@
+package test2;
+
+public interface testt {
+    String getName();
+    int getPrice();
+    String getMenuType();
+    int getMaxQuantity(); 
+    
+    // 메뉴 이름
+    String getMenuItemName();
+    int getQuantity();
+    int calculateTotalCost();
+}
+

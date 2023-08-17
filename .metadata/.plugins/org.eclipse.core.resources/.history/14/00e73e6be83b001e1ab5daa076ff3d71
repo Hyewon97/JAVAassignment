@@ -1,0 +1,43 @@
+package test2;
+
+public abstract class OrderItem {
+    private MenuItem menuItem;
+    private int quantity;
+
+    public OrderItem(MenuItem menuItem, int quantity) {
+        this.menuItem = menuItem;
+        this.quantity = quantity;
+    }
+
+    public String getMenuItemName() {
+        return menuItem.getName();
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public abstract int calculateTotalCost();
+}
+
+public class FoodOrderItem  extends OrderItem {
+    public FoodOrderItem(MenuItem menuItem, int quantity) {
+        super(menuItem, quantity);
+    }
+
+    @Override
+    public int calculateTotalCost() {
+        return getMenuItem().getPrice() * getQuantity();
+    }
+}
+
+public class DrinkOrderItem extends OrderItem {
+    public DrinkOrderItem(MenuItem menuItem, int quantity) {
+        super(menuItem, quantity);
+    }
+
+    @Override
+    public int calculateTotalCost() {
+        return getMenuItem().getPrice() * getQuantity();
+    }
+}

@@ -1,0 +1,9 @@
+package test2;
+
+public interface Item {
+    String getName();
+    int getPrice();
+    String getMenuType();
+    int getMaxQuantity(); 
+}
+

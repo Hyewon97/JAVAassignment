@@ -1,0 +1,46 @@
+package sqlTest;
+
+import java.sql.*;
+
+public class SQLServer {
+	public static void main(String[] args){
+		
+		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+		String url = "jdbc:sqlserver://192.168.50.107:1433";
+		String databaseName = "hw_db";
+		String user = "phw";
+		String password = "1111";
+		
+		///////////////////
+		/*Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+		String connectionUrl = "jdbc:sqlserver://192.168.50.107:1433;"
+				+ "databaseName=hw_db;user=phw;password=1111;"
+				+ "encrypt=true;"
+				+ "trustServerCertificate=true;";
+
+		try (Connection connection = DriverManager.getConnection(connectionUrl);) {
+			// Code here.
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt
+					.executeQuery("SELECT * FROM testTable1");
+
+			while (rs.next()) {
+				int AddressID = rs.getInt("AddressID");
+				String AddressLine1 = rs.getString("AddressLine1");
+
+				System.out.println(AddressID + ", " + AddressLine1);
+			}
+			rs.close();
+			stmt.close();
+			connection.close();
+		}
+		// Handle any errors that may have occurred.
+		catch (SQLException e) {
+			e.printStackTrace();
+		}*/
+		
+		///////////////
+	}
+
+}

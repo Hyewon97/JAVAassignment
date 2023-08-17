@@ -1,0 +1,28 @@
+package test;
+
+import java.sql.*;
+import java.io.*;
+
+ 
+
+public class sqlTest {
+public static void main(String[] args) throws Exception {
+String url = "jdbc:sqlserver://서버IP주소or도메인주소:1433;DatabaseName=데이터베이스명";
+Connection conn = null;
+Statement stmt = null;
+ResultSet rs = null;
+Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+conn = DriverManager.getConnection(url, "계정", "패스워드");
+stmt = conn.createStatement();
+rs = stmt.executeQuery("SELECT * FROM 테이블명");
+while( rs.next() ) {
+String field1 = rs.getString("필드명1");
+String field2 = rs.getString("필드명2");
+System.out.println(field1);
+System.out.println(field2);
+}
+rs.close();
+stmt.close();
+conn.close();
+}
+}

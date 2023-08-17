@@ -1,0 +1,11 @@
+package test2;
+
+public class Drink extends MenuItem {
+    public Drink(String name, int price) {
+        super(name, price);
+    }
+
+    @Override
+    public String getMenuType() {
+        return "음료";
+    }

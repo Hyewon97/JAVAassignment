@@ -1,0 +1,51 @@
+package test2;
+
+public class FoodOrderItem implements items {
+    private MenuItem menuItem;
+    private int quantity;
+
+    public FoodOrderItem(MenuItem menuItem, int quantity) {
+        this.menuItem = menuItem;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String getMenuItemName() {
+        return menuItem.getName();
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public int calculateTotalCost() {
+        return menuItem.getPrice() * quantity;
+    }
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getPrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getMenuType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getMaxQuantity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}
+

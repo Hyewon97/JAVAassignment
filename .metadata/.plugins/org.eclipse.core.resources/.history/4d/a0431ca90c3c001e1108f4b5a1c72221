@@ -1,0 +1,8 @@
+package employee;
+
+public class empDTO {
+	
+	private String name; // 이름
+	private String department; // 부서
+
+}

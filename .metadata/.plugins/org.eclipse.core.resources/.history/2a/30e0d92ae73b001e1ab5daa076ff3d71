@@ -1,0 +1,12 @@
+package test2;
+
+public class FoodOrderItem extends OrderItem {
+    public FoodOrderItem(MenuItem menuItem, int quantity) {
+        super(menuItem, quantity);
+    }
+
+    @Override
+    public int calculateTotalCost() {
+        return getMenuItemName().getPrice() * getQuantity();
+    }
+}

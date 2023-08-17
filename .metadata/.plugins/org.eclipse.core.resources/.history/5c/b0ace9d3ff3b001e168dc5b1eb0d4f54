@@ -1,0 +1,6 @@
+package kioskk;
+
+public interface Service {
+	String foodName();
+
+}

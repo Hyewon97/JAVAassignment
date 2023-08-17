@@ -1,0 +1,44 @@
+public interface MenuItem {
+    String getName();
+    int getPrice();
+}
+
+public class FoodMenuItem implements MenuItem {
+    private String name;
+    private int price;
+
+    public FoodMenuItem(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+}
+
+public class DrinkMenuItem implements MenuItem {
+    private String name;
+    private int price;
+
+    public DrinkMenuItem(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+}

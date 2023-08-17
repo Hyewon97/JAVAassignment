@@ -1,0 +1,14 @@
+package test2;
+
+public interface items {
+    String getName();
+    int getPrice(); // 가격
+    String getMenuType(); // 메뉴타입
+    int getMaxQuantity();  // 최대수량
+    
+    // 메뉴 이름
+    String getMenuItemName();
+    int getQuantity();
+    int calculateTotalCost();
+}
+
