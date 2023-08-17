@@ -24,6 +24,7 @@ public class HelloServlet extends HttpServlet {
 		response.setContentType("text/html;charaset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println("<h1>Welcome to HelloWorld!</h1>");
+		
 		out.close();
 	}
 
