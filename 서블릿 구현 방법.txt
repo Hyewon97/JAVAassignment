@@ -1,0 +1,12 @@
+1. jdbc jar 파일 받기
+2. C:\Program Files (x86)\Java\jdk1.6.0_07\jre\lib\ext 위치에 	
+	mssql-jdbc-12.....jar 파일 넣기
+3. 환경변수 CLASSPATH 만들고 jar파일명 포함해서 경로 설정하기
+============
+프로젝트 생성 > 자바 동적 웹 프로젝트
+
+https://dinfree.com/lecture/backend/codelabs/servlet-helloworld/index.html
+
+=============
+서블릿
+- mvc 패턴 
