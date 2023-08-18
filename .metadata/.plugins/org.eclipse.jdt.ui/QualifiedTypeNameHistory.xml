@@ -12,5 +12,9 @@
     <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="java.sql.Date"/>
+=======
+    <fullyQualifiedTypeName name="empRegi.model.Employee"/>
+>>>>>>> 1e703d91817cd85a0c782278d646be9c515b7385
 </qualifiedTypeNameHistroy>
