@@ -9,8 +9,7 @@ public class Employee {
 	private String name;
 	private String email;
 	private String password;
-	private Date hireDate;
-	private int depNum;
+	private String hireDate;
 	
 	// 게터, 세터 설정
 	public int getEmpNum() {
@@ -37,17 +36,11 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Date getHireDate() {
+	public String getHireDate() {
 		return hireDate;
 	}
-	public void setHireDate(Date hireDate) {
+	public void setHireDate(String hireDate) {
 		this.hireDate = hireDate;
-	}
-	public int getDepNum() {
-		return depNum;
-	}
-	public void setDepNum(int depNum) {
-		this.depNum = depNum;
 	}
 	
 	

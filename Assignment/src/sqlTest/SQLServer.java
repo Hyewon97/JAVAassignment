@@ -18,10 +18,10 @@ public class SQLServer {
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		conn = DriverManager.getConnection(url, "phw", "1111");
 		stmt = conn.createStatement();
-		rs = stmt.executeQuery("SELECT * FROM testTable1");
+		rs = stmt.executeQuery("SELECT * FROM empTable");
 		while (rs.next()) {
 			String field1 = rs.getString("name");
-			String field2 = rs.getString("department");
+			String field2 = rs.getString("email");
 			System.out.println(field1 + " " + field2);
 
 		}
