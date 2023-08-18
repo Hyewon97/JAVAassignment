@@ -10,7 +10,7 @@ import java.util.List;
 
 import ems.model.EmsUser;
 
-public class EmsUserDao {
+public class EmsUserDAO {
 
 	// mssql 드라이버 선언
 	private String url = "jdbc:sqlserver://192.168.50.107:1433;databaseName=hw_db;encrypt=true;trustServerCertificate=true;";
@@ -33,7 +33,7 @@ public class EmsUserDao {
 	private static final String UPDATE_USERS_BY_empNum = "update EmsUsers set name = ?,email= ?, department =? where empNum = ?;";
 
 	
-	public EmsUserDao() {
+	public EmsUserDAO() {
 		
 	}
 	
