@@ -18,4 +18,6 @@
     <fullyQualifiedTypeName name="empRegi.dao.EmployeeDao"/>
     <fullyQualifiedTypeName name="empRegi.model.Employee"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="ems.dao.EmsUserDAO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

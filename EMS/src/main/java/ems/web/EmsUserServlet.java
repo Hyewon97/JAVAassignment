@@ -2,6 +2,7 @@ package ems.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,23 +37,47 @@ public class EmsUserServlet extends HttpServlet {
 
 		switch (action) {
 		case "/new":
-			showNewForm(request, response);
+			try {
+				showNewForm(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			break;
 		case "/insert":
-			insertUser(request, response);
-
+			try {
+				insertUser(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			break;
 		case "/delete":
-
+			try {
+				deleteUser(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			break;
 		case "/edit":
-
+			try {
+				showEditForm(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			break;
 		case "/update":
-
+			try {
+				updateUser(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			break;
 		default:
-
+			try {
+				listUser(request, response); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			break;
 		}
 	}
@@ -65,18 +90,58 @@ public class EmsUserServlet extends HttpServlet {
 	}
 	
 	// insert
-	private void insertUser(HttpServletRequest request, HttpServletResponse response) 
+		private void insertUser(HttpServletRequest request, HttpServletResponse response) 
+				throws SQLException, IOException {
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String department = request.getParameter("department");
+			EmsUser newEmsUser = new EmsUser(name, email, department);
+			emsUserDAO.insertUser(newEmsUser);
+			response.sendRedirect("list");
+		}
+		
+	// deleteForm
+		private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
+				throws SQLException, IOException {
+			int empNum = Integer.parseInt(request.getParameter("empNum"));
+			emsUserDAO.deleteUser(empNum);
+			response.sendRedirect("list");
+		}
+		
+	
+	// showEditForm
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		int empNum = Integer.parseInt(request.getParameter("empNum"));
+		EmsUser existingUser = emsUserDAO.selectUser(empNum);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		request.setAttribute("emsUser", existingUser);
+		dispatcher.forward(request, response);
+
+	}
+	
+	// updateForm
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
+		int empNum = Integer.parseInt(request.getParameter("empNum"));
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String department = request.getParameter("department");
-		EmsUser newEmsUser = new EmsUser(name, email, department);
-		emsUserDAO.insertUser(newEmsUser);
+
+		EmsUser emsUser = new EmsUser(empNum, name, email, department);
+		emsUserDAO.updateUser(emsUser);
 		response.sendRedirect("list");
 	}
-
+		
+	// listUser
+	private void listUser(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<EmsUser> listUser = emsUserDAO.selectAllUsers();
+		request.setAttribute("listUser", listUser);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+		dispatcher.forward(request, response);
+	}
 	
-	//
 
 }
 

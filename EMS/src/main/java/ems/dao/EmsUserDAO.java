@@ -68,7 +68,7 @@ public class EmsUserDAO {
 	
 	// 사원 조회
 	public EmsUser selectUser(int empNum) {
-		EmsUser empUser = null;
+		EmsUser emsUser = null;
 		
 		// DB 연결
 		try (Connection connection = getConnection();
@@ -86,18 +86,18 @@ public class EmsUserDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String department = rs.getString("department");
-				empUser = new EmsUser(empNum, name, email, department);
+				emsUser = new EmsUser(empNum, name, email, department);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return empUser;
+		return emsUser;
 	}
 	
 	// 모든 사원 조회
 	public List<EmsUser> selectAllUsers() {
 
-		List<EmsUser> empUser = new ArrayList<>();
+		List<EmsUser> emsUser = new ArrayList<>();
 		
 		// DB 연결
 		try (Connection connection = getConnection();
@@ -115,12 +115,12 @@ public class EmsUserDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String department = rs.getString("department");
-				empUser.add(new EmsUser(empNum, name, email, department));
+				emsUser.add(new EmsUser(empNum, name, email, department));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return empUser;
+		return emsUser;
 	}
 	
 	
@@ -138,14 +138,14 @@ public class EmsUserDAO {
 	}
 	
 	// 사원 정보 수정
-	public boolean updateUser(EmsUser empUser) throws SQLException {
+	public boolean updateUser(EmsUser emsUser) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_BY_empNum);) {
-			statement.setString(1, empUser.getName());
-			statement.setString(2, empUser.getEmail());
-			statement.setString(3, empUser.getDepartment());
-			statement.setInt(4, empUser.getEmpNum());
+			statement.setString(1, emsUser.getName());
+			statement.setString(2, emsUser.getEmail());
+			statement.setString(3, emsUser.getDepartment());
+			statement.setInt(4, emsUser.getEmpNum());
 
 			rowUpdated = statement.executeUpdate() > 0;
 		}
