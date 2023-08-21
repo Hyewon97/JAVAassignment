@@ -46,8 +46,32 @@
 	<section name="JavaSearchPage">
 		<item key="CASE_SENSITIVE" value="false"/>
 		<item key="INCLUDE_MASK" value="15"/>
-		<item key="HISTORY_SIZE" value="5"/>
+		<item key="HISTORY_SIZE" value="7"/>
 		<section name="HISTORY0">
+			<item key="searchFor" value="0"/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="emsUser"/>
+			<item key="limitTo" value="2"/>
+			<item key="matchLocations" value="0"/>
+			<item key="javaElement" value=""/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="includeMask" value="15"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY1">
+			<item key="searchFor" value="0"/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="user"/>
+			<item key="limitTo" value="2"/>
+			<item key="matchLocations" value="0"/>
+			<item key="javaElement" value=""/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="includeMask" value="15"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY2">
 			<item key="searchFor" value="0"/>
 			<item key="scope" value="0"/>
 			<item key="pattern" value="sp_executesql SQL"/>
@@ -59,7 +83,7 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY1">
+		<section name="HISTORY3">
 			<item key="searchFor" value="4"/>
 			<item key="scope" value="0"/>
 			<item key="pattern" value="context"/>
@@ -71,7 +95,7 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY2">
+		<section name="HISTORY4">
 			<item key="searchFor" value="4"/>
 			<item key="scope" value="0"/>
 			<item key="pattern" value="id"/>
@@ -83,7 +107,7 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY3">
+		<section name="HISTORY5">
 			<item key="searchFor" value="4"/>
 			<item key="scope" value="0"/>
 			<item key="pattern" value="maxQuantity"/>
@@ -95,7 +119,7 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY4">
+		<section name="HISTORY6">
 			<item key="searchFor" value="0"/>
 			<item key="scope" value="0"/>
 			<item key="pattern" value="orderFood"/>
@@ -138,6 +162,7 @@
 	<section name="ClasspathContainerSelectionPage">
 		<item key="index" value="7"/>
 	</section>
+<<<<<<< HEAD
 	<section name="SourceActionDialog.constructors">
 		<item key="VisibilityModifier" value="1"/>
 		<item key="FinalModifier" value="false"/>
@@ -164,15 +189,24 @@
 	</section>
 	<section name="ProblemSeveritiesConfigurationBlock">
 		<item key="expanded0" value="false"/>
+=======
+	<section name="ProblemSeveritiesConfigurationBlock">
+		<item key="expanded0" value="true"/>
+>>>>>>> d25a3a74d636737da1450c73a7e1fa2afcc736e2
 		<item key="expanded1" value="false"/>
 		<item key="expanded2" value="false"/>
 		<item key="expanded3" value="false"/>
 		<item key="expanded4" value="false"/>
+<<<<<<< HEAD
 		<item key="expanded5" value="true"/>
+=======
+		<item key="expanded5" value="false"/>
+>>>>>>> d25a3a74d636737da1450c73a7e1fa2afcc736e2
 		<item key="expanded6" value="false"/>
 		<item key="expanded7" value="false"/>
 		<item key="expanded8" value="false"/>
 	</section>
+<<<<<<< HEAD
 	<section name="org.eclipse.jdt.internal.ui.dialogs.OpenTypeSelectionDialog2">
 		<item key="ShowStatusLine" value="true"/>
 		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;"/>
@@ -184,4 +218,6 @@
 		<item key="DIALOG_HEIGHT" value="681"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
+=======
+>>>>>>> d25a3a74d636737da1450c73a7e1fa2afcc736e2
 </section>

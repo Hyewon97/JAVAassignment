@@ -16,6 +16,7 @@
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="ems.dao.EmsUserDao"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="ems.model.EmsUser"/>
     <fullyQualifiedTypeName name="ems.dao.EmsUserDAO"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
@@ -29,4 +30,8 @@
     <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String"/>
     <fullyQualifiedTypeName name="javax.security.auth.message.callback.PrivateKeyCallback.Request"/>
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebFilter"/>
+=======
+    <fullyQualifiedTypeName name="ems.dao.EmsUserDAO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+>>>>>>> d25a3a74d636737da1450c73a7e1fa2afcc736e2
 </qualifiedTypeNameHistroy>

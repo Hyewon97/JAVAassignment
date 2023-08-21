@@ -35,6 +35,7 @@ public class EmsUserServlet extends HttpServlet {
 
 		String action = request.getServletPath();
 
+<<<<<<< HEAD
 		try {
 			switch (action) {
 			case "/new":
@@ -58,6 +59,52 @@ public class EmsUserServlet extends HttpServlet {
 			}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
+=======
+		switch (action) {
+		case "/new":
+			try {
+				showNewForm(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			break;
+		case "/insert":
+			try {
+				insertUser(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "/delete":
+			try {
+				deleteUser(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "/edit":
+			try {
+				showEditForm(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case "/update":
+			try {
+				updateUser(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		default:
+			try {
+				listUser(request, response); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+>>>>>>> d25a3a74d636737da1450c73a7e1fa2afcc736e2
 		}
 	}
 	
