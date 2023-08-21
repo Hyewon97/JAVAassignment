@@ -21,7 +21,7 @@ public class EmsUserDAO {
 			+ "(?, ?, ?)";
 	
 	// empNum로 정보 조회
-	private static final String SELECT_USER_BY_empNum = "select empNun, name, email, department from EmsUsers where empNum=?";
+	private static final String SELECT_USER_BY_empNum = "select empNum, name, email, department from EmsUsers where empNum=?";
 
 	// 모든 사원 조회
 	private static final String SELECT_All_USERS = "select * from EmsUsers";
@@ -30,7 +30,7 @@ public class EmsUserDAO {
 	private static final String DELETE_USER_BY_empNum = "delete from EmsUsers where empNum=?";
 
 	// empNum에 해당하는 정보 수정
-	private static final String UPDATE_USERS_BY_empNum = "update EmsUsers set name = ?,email= ?, department =? where empNum = ?;";
+	private static final String UPDATE_USERS_BY_empNum = "update EmsUsers set name = ?,email= ?, department =? where empNum = ?";
 
 	
 	public EmsUserDAO() {
@@ -52,23 +52,23 @@ public class EmsUserDAO {
 	}
 	
 	// insert 문
-	public void insertUser(EmsUser user) throws SQLException {
+	public void insertUser(EmsUser emsUser) throws SQLException {
 		System.out.println(INSERT_USERS_SQL); // sql 정상적으로 실행되는지 확인
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-			preparedStatement.setString(1, user.getName());
-			preparedStatement.setString(2, user.getEmail());
-			preparedStatement.setString(3, user.getDepartment());
+			preparedStatement.setString(1, emsUser.getName());
+			preparedStatement.setString(2, emsUser.getEmail());
+			preparedStatement.setString(3, emsUser.getDepartment());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			printSQLException(e);
 		}
 	}
 	
 	// 사원 조회
 	public EmsUser selectUser(int empNum) {
-		EmsUser empUser = null;
+		EmsUser emsUser = null;
 		
 		// DB 연결
 		try (Connection connection = getConnection();
@@ -86,18 +86,18 @@ public class EmsUserDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String department = rs.getString("department");
-				empUser = new EmsUser(empNum, name, email, department);
+				emsUser = new EmsUser(empNum, name, email, department);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			printSQLException(e);
 		}
-		return empUser;
+		return emsUser;
 	}
 	
 	// 모든 사원 조회
 	public List<EmsUser> selectAllUsers() {
 
-		List<EmsUser> empUser = new ArrayList<>();
+		List<EmsUser> emsUser = new ArrayList<>();
 		
 		// DB 연결
 		try (Connection connection = getConnection();
@@ -115,12 +115,12 @@ public class EmsUserDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String department = rs.getString("department");
-				empUser.add(new EmsUser(empNum, name, email, department));
+				emsUser.add(new EmsUser(empNum, name, email, department));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			printSQLException(e);
 		}
-		return empUser;
+		return emsUser;
 	}
 	
 	
@@ -138,20 +138,36 @@ public class EmsUserDAO {
 	}
 	
 	// 사원 정보 수정
-	public boolean updateUser(EmsUser empUser) throws SQLException {
+	public boolean updateUser(EmsUser emsUser) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_BY_empNum);) {
-			statement.setString(1, empUser.getName());
-			statement.setString(2, empUser.getEmail());
-			statement.setString(3, empUser.getDepartment());
-			statement.setInt(4, empUser.getEmpNum());
+			statement.setString(1, emsUser.getName());
+			statement.setString(2, emsUser.getEmail());
+			statement.setString(3, emsUser.getDepartment());
+			statement.setInt(4, emsUser.getEmpNum());
 
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;
 	}
 	
+	
+	private void printSQLException(SQLException ex) {
+		for (Throwable e : ex) {
+			if (e instanceof SQLException) {
+				e.printStackTrace(System.err);
+				System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+				System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+				System.err.println("Message: " + e.getMessage());
+				Throwable t = ex.getCause();
+				while (t != null) {
+					System.out.println("Cause: " + t);
+					t = t.getCause();
+				}
+			}
+		}
+	}
 
 }
 

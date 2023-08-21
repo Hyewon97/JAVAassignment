@@ -1,15 +1,19 @@
 package empRegi.model;
 
-import java.sql.Date;
 
-// dto 개념인듯
-// 직원 테이블 변수
+
 public class Employee {
-	private int empNum;
-	private String name;
-	private String email;
-	private String password;
-	private String hireDate;
+	private int empNum; //사원번호
+	private String name; // 이름
+	private String email; // 이메일
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	private String department; // 부서
+
 	
 	// 게터, 세터 설정
 	public int getEmpNum() {
@@ -24,24 +28,13 @@ public class Employee {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmail() {
-		return email;
+	public String getDepartment() {
+		return department;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getHireDate() {
-		return hireDate;
-	}
-	public void setHireDate(String hireDate) {
-		this.hireDate = hireDate;
-	}
+
 	
 	
 	

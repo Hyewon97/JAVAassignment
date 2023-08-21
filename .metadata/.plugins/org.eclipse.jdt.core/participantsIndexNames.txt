@@ -1,3 +1,9 @@
 INDEX VERSION 1.134
+C:\study\assignment\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\79854788.index
+\servlet3\src\main\java
 C:\study\assignment\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3917038622.index
 \servlet\src\main\java
+C:\study\assignment\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2378747700.index
+\EMS\src\main\java
+C:\study\assignment\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\170234901.index
+\servlet2\src\main\java
