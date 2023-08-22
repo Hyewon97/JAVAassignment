@@ -1,28 +1,8 @@
-<<<<<<< HEAD
 INDEX VERSION 1.4+C:\study\assignment\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2064299831.index
-2445610198.index
-1635455275.index
 2045488502.index
-86918746.index
 3541653292.index
-561723859.index
 1915320012.index
-1759645595.index
 373069109.index
-198672526.index
 2496701615.index
-=======
-INDEX VERSION 1.4+C:\JavaDev\JAVAassignment2\JAVAassignment\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2064299831.index
-2102172872.index
-1366623025.index
-3541653292.index
-1635455275.index
-3201790181.index
-561723859.index
-1878525540.index
-198672526.index
-1154903687.index
-2126586105.index
->>>>>>> d25a3a74d636737da1450c73a7e1fa2afcc736e2
+1759645595.index
+2445610198.index
