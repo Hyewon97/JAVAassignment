@@ -43,6 +43,8 @@ public class Java221_ChatClient implements ActionListener, Runnable {
 		System.out.printf("사용자 이름을 입력하세요: ");
 		Scanner sc = new Scanner(System.in);
 		userName = sc.nextLine();
+		
+		
 		if (userName.equals("")) {
 			userName = "guest";
 			

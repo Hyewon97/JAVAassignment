@@ -113,6 +113,7 @@ public class UserDAO {
 		}
 		return rowDeleted;
 	}
+	
 	//정보 수정
 	public boolean updateUser(User user) throws SQLException {
 		boolean rowUpdated;
