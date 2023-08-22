@@ -1,5 +1,5 @@
 package chat2;
-
+/* 코드 에러가 발생하지 않으나 "사용법 : --" 이 출력됨 */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
