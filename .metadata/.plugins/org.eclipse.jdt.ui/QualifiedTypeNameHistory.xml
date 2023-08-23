@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.net.ServerSocket"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="chat1.Server"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.Const"/>
     <fullyQualifiedTypeName name="com.sun.java_cup.internal.runtime.Scanner"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.net.DatagramPacket"/>
     <fullyQualifiedTypeName name="javax.print.attribute.standard.JobMessageFromOperator"/>
-    <fullyQualifiedTypeName name="java.net.DatagramSocket"/>
     <fullyQualifiedTypeName name="java.net.InetAddress"/>
     <fullyQualifiedTypeName name="sun.jvm.hotspot.debugger.cdbg.basic.BasicLineNumberInfo"/>
     <fullyQualifiedTypeName name="chat1.Client"/>
+    <fullyQualifiedTypeName name="java.awt.TextArea"/>
+    <fullyQualifiedTypeName name="java.awt.Frame"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="java.lang.Runnable"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="java.net.DatagramPacket"/>
+    <fullyQualifiedTypeName name="java.net.DatagramSocket"/>
+    <fullyQualifiedTypeName name="java.net.ServerSocket"/>
 </qualifiedTypeNameHistroy>

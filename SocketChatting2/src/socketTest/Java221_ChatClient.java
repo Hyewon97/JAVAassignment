@@ -125,11 +125,13 @@ public class Java221_ChatClient implements ActionListener, Runnable {
 	} // end initStart
 
 	public static void main(String[] args) {
+		
+		
 		// 화면 만들기
-		Java221_ChatClient client = new Java221_ChatClient("192.168.0.40", 7777); // 
+		Java221_ChatClient client = new Java221_ChatClient("192.168.100.187", 7777); // 
 		client.initStart();
 
-	} // end main
+	} // end main 192.168.100.187
 
 	@Override
 	public void actionPerformed(ActionEvent e) { // action이 추가 됨

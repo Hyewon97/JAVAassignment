@@ -1,12 +1,13 @@
-package chat1;
+package chat3;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
+import java.net.*;
+import java.util.*;
 
 public class Server {
 	
+	// 클라이언트의 채팅을 다른 클라이언트에게 보여주기 위해 클라이언트 ip 주소 목록 저장
+    private List<InetAddress> clients; // 클라이언트 IP 주소 목록 저장
+    
 	// 데이터그램 소켓 선언
 	private DatagramSocket datagramSocket;
 	
@@ -16,6 +17,7 @@ public class Server {
 	// const 선언
 	public Server(DatagramSocket datagramSocket) {
 		this.datagramSocket = datagramSocket;
+		this.clients = new ArrayList<>();
 	}
 	
 	public void reciveThenSend()
@@ -36,6 +38,9 @@ public class Server {
 				
 				// 패킷 보내기
 				datagramSocket.send(datagramPacket);
+				
+				// 브로드캐스팅: 다른 클라이언트들에게도 메시지 보내기
+              //  broadcast(messageFromClinet);
 			}catch (Exception e) {
 				e.printStackTrace();
 				break; // 프로그램 끝내기
@@ -49,6 +54,19 @@ public class Server {
 		server.reciveThenSend(); // 에러 발생할때까지 돎
 		
 	}
+	
+	// 다른 클라이언트에게 패킷 보내기
+   /* private void broadcast(String message) {
+        for (InetAddress clientAddress : clients) {
+            try {
+                DatagramPacket broadcastPacket = new DatagramPacket(
+                        message.getBytes(), message.length(), clientAddress, 1234);
+                datagramSocket.send(broadcastPacket);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
 }
 
 
