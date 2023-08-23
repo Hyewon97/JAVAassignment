@@ -41,6 +41,10 @@ public class Server {
 				// ip 주소 확인
 				System.out.println(inetAddress);
 				
+				// 클라이언트의 주소를 clients에 저장
+				clients.add(inetAddress);
+
+				
 				
 				int port = datagramPacket.getPort(); // 포트 가지고오기
 				String messageFromClinet = new String(datagramPacket.getData(),0, datagramPacket.getLength()); // 데이터패킷에 있는 데이터 가지고 오기, 0 = 모든 데이터 가지고 오기
@@ -75,11 +79,11 @@ public class Server {
     	
         for (InetAddress clientAddress : clients) {
             try {
-				/*
-				 * DatagramPacket broadcastPacket = new DatagramPacket( message.getBytes(),
-				 * message.length(), clientAddress, 1234);
-				 */
-//                datagramSocket.send(broadcastPacket);
+				
+				  DatagramPacket broadcastPacket = new DatagramPacket( message.getBytes(),
+				  message.length(), clientAddress, 1234);
+				 
+                datagramSocket.send(broadcastPacket);
             } catch (Exception e) {
                 e.printStackTrace();
             }
