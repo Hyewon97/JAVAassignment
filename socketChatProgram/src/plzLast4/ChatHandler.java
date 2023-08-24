@@ -69,7 +69,7 @@ public class ChatHandler implements Runnable {
 					broadcast(message);
 				}
 			} catch (IOException e) {
-				System.out.println(socket.getInetAddress().getHostAddress() + " 나갔습니다.");
+				System.out.println(socket.getInetAddress().getHostAddress() + " 나갔습니다."); // 파일 수신하고 나갔습니다 메세지 뜨는데 왜일까.. 근데 여기선 또 안뜸
 				userVect.remove(this);
 				break;
 			}
