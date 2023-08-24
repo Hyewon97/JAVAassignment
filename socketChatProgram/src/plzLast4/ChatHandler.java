@@ -37,8 +37,8 @@ public class ChatHandler implements Runnable {
 				OutputStream os = socket.getOutputStream();
 				dataIn = new DataInputStream(new BufferedInputStream(is));
 				dataOut = new DataOutputStream(new BufferedOutputStream(os));
-				// 스레드로 돌아갈 수 있도록 함
-				th = new Thread(this);
+				
+				th = new Thread(this); // 스레드로 돌아갈 수 있도록 함
 				th.start();
 
 			} catch (IOException e) {
@@ -53,47 +53,49 @@ public class ChatHandler implements Runnable {
 		// 현재 자신을 벡터에 넣어둠
 		userVect.addElement(this);
 
-		// 스레드가 연결이 끊어지지 않았으면 계속 실행
-		 while (!Thread.interrupted()) {
-	            try {
-	                String message = dataIn.readUTF();
+		// 스레드가 연결이 끊어지지 않으면 계속 실행되도록 함
+		while (!Thread.interrupted()) {
+			try {
+				String message = dataIn.readUTF(); // 인코딩 utf-8로 데이터를 받아옴
 
-	                if (message.equals("파일 전송")) {
-	                    String fileName = dataIn.readUTF();
-	                    receiveFile(dataIn, fileName);
-	                    broadcast("파일 " + fileName + "이(가) 전송되었습니다.");
-	                } else {
-	                    broadcast(message);
-	                }
-	            } catch (IOException e) {
-	                System.out.println(socket.getInetAddress().getHostAddress() + " 나갔습니다.");
-	                userVect.remove(this);
-	                break;
-	            }
-	        }
+				if (message.equals("파일 전송")) { // 파일 전송을 하게 메세지를 "파일 전송으로 변환함"
+					String fileName = dataIn.readUTF(); // 파일 이름을 가지고 옴
+					receiveFile(dataIn, fileName);
+					broadcast("파일 " + fileName + "이(가) 전송되었습니다.");
+					
+					// 여기서 break 걸면 어떻게 되려나
+					//break; ////////////////////////////// 여기 추가 > 해도 똑같음
+				} else {
+					broadcast(message);
+				}
+			} catch (IOException e) {
+				System.out.println(socket.getInetAddress().getHostAddress() + " 나갔습니다.");
+				userVect.remove(this);
+				break;
+			}
+		}
 
 	} // end run() ///////////////////////////////
 
-	
 	//// 새로 추가
 	public void broadcast(String message) {
-        Enumeration<ChatHandler> enu = userVect.elements();
-        while (enu.hasMoreElements()) {
-            ChatHandler handler = enu.nextElement();
-            try {
-                byte[] messageBytes = message.getBytes(StandardCharsets.UTF_8); // 인코딩 utf-8로 바이트를 받아서 byte[]에 저장
-                int messageLength = messageBytes.length;
+		Enumeration<ChatHandler> enu = userVect.elements();
+		while (enu.hasMoreElements()) {
+			ChatHandler handler = enu.nextElement();
+			try {
+				byte[] messageBytes = message.getBytes(StandardCharsets.UTF_8); // 인코딩 utf-8로 바이트를 받아서 byte[]에 저장
+				int messageLength = messageBytes.length;
 
-                handler.dataOut.writeInt(messageLength); // 채팅 텍스트의 바이트 길이 전송
-                handler.dataOut.write(messageBytes); // 실제 텍스트 데이터 전송.. 근데 출력하면 출력할때 공백이 엄청 커지는데? 이게 맞나
+				handler.dataOut.writeInt(messageLength); // 채팅 텍스트의 바이트 길이 전송
+				handler.dataOut.write(messageBytes); // 실제 텍스트 데이터 전송.. 근데 출력하면 출력할때 공백이 엄청 커지는데? 이게 맞나
 
-                handler.dataOut.flush();
-            } catch (IOException e) {
-                handler.stop();
-            }
-        }
-    }
-	
+				handler.dataOut.flush();
+			} catch (IOException e) {
+				handler.stop();
+			}
+		}
+	}
+
 	///
 
 	private void stop() {
@@ -113,27 +115,27 @@ public class ChatHandler implements Runnable {
 		}
 
 	} ////////////////////////////////////
-	
+
 	public void receiveFile(DataInputStream dis, String fileName) {
-        try {
-            File directory = new File("C:\\fileDown");
-            if (!directory.exists()) {
-                directory.mkdirs();
-            }
+		try {
+			File directory = new File("C:\\fileDown");
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
 
-            File file = new File(directory, fileName);
-            FileOutputStream fos = new FileOutputStream(file);
+			File file = new File(directory, fileName);
+			FileOutputStream fos = new FileOutputStream(file);
 
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = dis.read(buffer)) != -1) {
-                fos.write(buffer, 0, bytesRead);
-            }
+			byte[] buffer = new byte[4096];
+			int bytesRead;
+			while ((bytesRead = dis.read(buffer)) != -1) {
+				fos.write(buffer, 0, bytesRead);
+			}
 
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+			fos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 } // end class
