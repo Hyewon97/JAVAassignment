@@ -1,4 +1,4 @@
-package plzLast4;
+package plzLast4_2;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -37,12 +37,11 @@ public class ChatHandler implements Runnable {
 				OutputStream os = socket.getOutputStream();
 				dataIn = new DataInputStream(new BufferedInputStream(is));
 				dataOut = new DataOutputStream(new BufferedOutputStream(os));
-
-				th = new Thread(this); // 스레드로 돌아갈 수 있도록 함
+				// 스레드로 돌아갈 수 있도록 함
+				th = new Thread(this);
 				th.start();
 
 			} catch (IOException e) {
-				System.out.println("초기시작 예외발생");
 				e.printStackTrace();
 			}
 
@@ -54,40 +53,20 @@ public class ChatHandler implements Runnable {
 		// 현재 자신을 벡터에 넣어둠
 		userVect.addElement(this);
 
-		// 스레드가 연결이 끊어지지 않으면 계속 실행되도록 함
+		// 스레드가 연결이 끊어지지 않았으면 계속 실행
 		while (!Thread.interrupted()) {
 			try {
-				String message = dataIn.readUTF(); // 인코딩 utf-8로 데이터를 받아옴
-				broadcast(message);
-				
-				
+				String message = dataIn.readUTF();
 
-				/*
-				if (message.equals("파일 전송")) { // 파일 전송을 하게 메세지를 "파일 전송으로 변환함"
-					// 파일 전송 문자열을 받아오는지
-					
-					String fileName = dataIn.readUTF(); // 파일 이름을 가지고 옴
-					
-					System.out.println("===================== " +fileName);
-									
-					broadcast("파일 " + fileName + "이(가) 전송되었습니다."); // 이름 받아와서 출려까지는 되는거 같은데	
-					System.out.println("파일 : " + fileName + " 전송");
-					
-					//receiveFile(dataIn, fileName); // 파일을 보내고 보낸 클라이언트 쪽에서 닫아야 아래 브로드 캐스트가 됨.. 여기서 닫는데 잘못되었나
-				
-				} else if (message.equals("파일 전송 완료")) {
-					dataOut.writeUTF("다음 메시지를 입력하세요.");
-					dataOut.flush();
+				if (message.equals("파일 전송")) {
+					String fileName = dataIn.readUTF();
+					receiveFile(dataIn, fileName);
+					broadcast("파일 " + fileName + "이(가) 전송되었습니다.");
 				} else {
 					broadcast(message);
 				}
-				*/
-
-			} catch (IOException e) { // 스레드가 연결이 끊긴 경우잖아
-				
-				System.out.println("전송 예외처리..."); // 여기에서 확실히 문제가 있다는건 알겠어.. 근데..?
-				System.out.println(socket.getInetAddress().getHostAddress() + " 나갔습니다."); // 파일 수신하고 나갔습니다 메세지 뜨는데 왜일까..
-																							// 근데 여기선 또 안뜸
+			} catch (IOException e) {
+				System.out.println(socket.getInetAddress().getHostAddress() + " 나갔습니다.");
 				userVect.remove(this);
 				break;
 			}
@@ -98,24 +77,21 @@ public class ChatHandler implements Runnable {
 	//// 새로 추가
 	public void broadcast(String message) {
 		Enumeration<ChatHandler> enu = userVect.elements();
-		
+
 		// 서버에서 메세지 출력
 		System.out.println(message);
-		
+
 		while (enu.hasMoreElements()) {
 			ChatHandler handler = enu.nextElement();
 			try {
 				byte[] messageBytes = message.getBytes(StandardCharsets.UTF_8); // 인코딩 utf-8로 바이트를 받아서 byte[]에 저장
-								
 				int messageLength = messageBytes.length;
 
 				handler.dataOut.writeInt(messageLength); // 채팅 텍스트의 바이트 길이 전송
 				handler.dataOut.write(messageBytes); // 실제 텍스트 데이터 전송.. 근데 출력하면 출력할때 공백이 엄청 커지는데? 이게 맞나
-				
 
 				handler.dataOut.flush();
 			} catch (IOException e) {
-				System.out.println("브로드캐스트 예외발생");
 				handler.stop();
 			}
 		}
@@ -132,36 +108,31 @@ public class ChatHandler implements Runnable {
 					dataIn.close();
 					dataOut.close();
 				} catch (IOException e) {
-					System.out.println("stop 예외발생");
 					System.out.println(e.toString());
 				}
 			}
 		}
 
-	} ////////////////////////////////////
+	}
 
-	// receiveFile 메소드 선언
 	public void receiveFile(DataInputStream dis, String fileName) {
 		try {
-			File directory = new File("C:\\fileDown"); // 아래 경로로 지정
-			if (!directory.exists()) { // 경로가 없으면
-				directory.mkdirs(); // 아래 경로대로 폴더를 만들어라
+			File directory = new File("C:\\fileDown");
+			if (!directory.exists()) {
+				directory.mkdirs();
 			}
 
-			File file = new File(directory, fileName); // 파일 선언. 경로와 파일 이름을 던지기
-			FileOutputStream fos = new FileOutputStream(file);  // 경로에 파일을 받기
+			File file = new File(directory, fileName);
+			FileOutputStream fos = new FileOutputStream(file);
 
-			byte[] buffer = new byte[4096]; // 버퍼 선언
-			int bytesRead; 
+			byte[] buffer = new byte[4096];
+			int bytesRead;
 			while ((bytesRead = dis.read(buffer)) != -1) {
 				fos.write(buffer, 0, bytesRead);
 			}
 
-			fos.close(); // 파일 받기 종료
-			
-			
+			fos.close();
 		} catch (IOException e) {
-			System.out.println("리시브파일 예외발생");
 			e.printStackTrace();
 		}
 	}
