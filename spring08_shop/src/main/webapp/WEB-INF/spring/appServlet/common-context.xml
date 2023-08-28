@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		
+<!-- interceptor 환경 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*/*.do"/>
+			<mvc:exclude-mapping path="/home.do"/>
+			<mvc:exclude-mapping path="/member/login.do"/>
+			<mvc:exclude-mapping path="/member/signup.do"/>
+			<mvc:exclude-mapping path="/board/list.do"/>
+			<mvc:exclude-mapping path="/board/view.do"/>
+			<bean class="common.interceptor.AuthCheckInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- [1] DataSource 빈 선언 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+		<property name="username" value="hr" />
+		<property name="password" value="a1234" />
+	</bean>
+
+	<!-- [2] SqlSessionFactoryBean 빈 선언 -->
+	<bean id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapper/boardMapper.xml</value>
+				<value>classpath:mapper/memberMapper.xml</value>
+			</list>
+		</property>
+
+		<!-- <property name="configLocation" value="classpath:mapper/configuration.xml" 
+			/> -->
+	</bean>
+
+
+	<!-- [3] SqlSessionTemplate 빈 선언 -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>
+
+	<!-- 선언적 트랜잭션 : <tx:advice> 태그를 이용한 트랜잭션 -->
+	<!-- 매니저 one.xml과 two.xml가 관리하는 애가 달라서 중복이 아니다. -->
+	<!-- Spring JDBC나 Mybatis를 이용해서 DB연동을 처리하는 경우 DataSourceTransactionManager이 
+		트랜잭션 관리자로 사용된다. -->
+	<!-- [4] TransactionManager 빈 선언 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- [5] 선언적 트랜잭션 : <tx:advice>태그를 이용한 트랜잭션 처리 -->
+	<tx:advice id="txAdvice"
+		transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*Process"
+				rollback-for="org.springframework.dao.DuplicateKeyException" /> <!-- 이름이 process로 끝나는 이름에서 오류가 발생하면 롤백을 하겠다. -->
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 트랜잭션으로 aop를 처리해줄 때 이렇게 처리하면 된다. 로깅.. 처리를 할때 aop를 해주면 된다. -->
+	<aop:config>
+		<aop:pointcut
+			expression="execution(*  service.*ServiceImp.*Process(..))" id="aa" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="aa" />
+	</aop:config>
+
+
+	<!-- 파일 첨부 아이디는 반드시 아래랑 같아야 한다. 첨부파일을 크롬에서는 못찾기 때문에 등록이 필요하다. org/apache/commons/fileupload/FileItemFactory 
+		가 필요. -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1000000000"></property>
+	</bean>
+
+
+	<!-- controller -->
+	<bean class="com.mycompany.myapp.HomeController" />
+
+
+
+	<!-- tiles -->
+	<bean
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- View를 찾는 정보를 선언 -->
+	<bean
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1" />
+
+	</bean>
+
+	<!-- ViewResolver -->
+	<bean
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="2" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="3" />
+	</bean>
+</beans>
