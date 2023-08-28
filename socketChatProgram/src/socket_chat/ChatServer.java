@@ -1,4 +1,4 @@
-package plzLast4;
+package socket_chat;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -23,7 +23,6 @@ public class ChatServer {
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("서버 메인 예외발생");
 			e.printStackTrace();
 		}
 	}  // end main

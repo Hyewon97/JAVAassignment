@@ -1,4 +1,4 @@
-package plzLast4;
+package socket_chat;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -78,16 +78,14 @@ public class ChatClient implements ActionListener, Runnable {
 							"알림", JOptionPane.YES_NO_OPTION); // 예/아니오 옵션 사용
 
 					if (result2 == JOptionPane.YES_OPTION) { // 예를 선택했으면
-						///////////////////////////////////////////////////////////////////////////////
 
-						
+						// sendFile 실행하면 연결 끊어짐. 처음 파일 전송은 작동함.
 						sendFile(selectedFile.getPath()); // 선택한 파일 전송, 파일의 경로를 넘겨줌
+												
+						JOptionPane.showMessageDialog(frm, selectedFile.getName() + "파일이 전송되었습니다.", "알림", 
+								JOptionPane.INFORMATION_MESSAGE); //파일 전송되었다고 알람창 띄우기
 						
-						
-						JOptionPane.showMessageDialog(frm, selectedFile.getName() + "파일이 전송되었습니다.", "알림", //파일 전송되었다고 알람창 띄우기
-								
-						//////////////////////////////////////////////////////////////////////////////////
-								JOptionPane.INFORMATION_MESSAGE);
+						// 아니오를 선택한 경우 연결 끊어지는 문제는 발생되지 않음
 					} else if (result2 == JOptionPane.NO_OPTION) { // 아니오를 선택했으면
 						JOptionPane.showMessageDialog(frm, "전송이 취소 되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE); // 전송취소 알람창 띄우기
 					}
@@ -127,7 +125,6 @@ public class ChatClient implements ActionListener, Runnable {
 				dataIn.close();
 				dataOut.close();
 			} catch (IOException e) {
-				System.out.println("stop 예외발생");
 				e.printStackTrace();
 			}
 		}
@@ -148,7 +145,6 @@ public class ChatClient implements ActionListener, Runnable {
 			try { // 예외가 발생하면 소켓 닫기
 				socket.close();
 			} catch (IOException e1) {
-				System.out.println("initStart 예외 발생");
 				e1.printStackTrace();
 			}
 		}
@@ -199,27 +195,18 @@ public class ChatClient implements ActionListener, Runnable {
 				taOutput.append(line + "\r\n"); // 문자열 처리. 줄바꿈
 			} catch (IOException e) {
 				
-				System.out.println("수신 예외 발생");
 				break;
 			}
 		}
 	}
 
-	//////////////////////////////////////////////////// 이 메소드 실행하면 다음 메세지 입력이 안됨.
-	//////////////////////////////////////////////////// 어째서
+
 	public void sendFile(String filePath) {
 
 		System.out.println("센드 파일 메소드 실행, 전송 파일 존재 : " + filePath);
 		
-		try {
-			dataOut.writeUTF("파일 전송 되는지 확인하기");
-			dataOut.writeUTF("왜 안됨");
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		/*
+	
+		// try-catch 문 실행되면 연결이 끊어짐
 		// 존재하지 않는 파일이면
 		try {
 			File file = new File(filePath);
@@ -233,11 +220,6 @@ public class ChatClient implements ActionListener, Runnable {
 			// 파일 전송 시작을 알리는 메시지 전송
 			dataOut.writeUTF("파일 전송"); // "파일 전송" 메세지를 날려서 파일 전송을 함
 			dataOut.writeUTF(file.getName());
-			
-			///////////////////////////////////////////////////////// 파일 전송까지는 되는듯
-
-			// 파일 이름 확인
-			System.out.println("파일 이름 " + file.getName()); // 잘 가지고 옴
 
 			FileInputStream fis = new FileInputStream(file);
 			byte[] buffer = new byte[4096];
@@ -253,15 +235,11 @@ public class ChatClient implements ActionListener, Runnable {
 			fis.close(); //파일 전송 닫기
 
 			dataOut.flush(); // 버퍼 비우기
-			
-			
-			
-			
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		*/
+		
 		
 		
 	}

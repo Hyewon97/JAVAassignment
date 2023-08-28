@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="send"/>
+		<item key="selection" value="System.out.print"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="system.out.print"/>
+			<item value="dataOut.writeUTF"/>
+			<item value="buffer"/>
+			<item value="buffer."/>
+			<item value="run"/>
 			<item value="send"/>
 			<item value="actionper"/>
 			<item value="actionperfomed"/>
 			<item value="action"/>
 			<item value="down"/>
 			<item value="if"/>
-			<item value="run"/>
 			<item value="thread"/>
 			<item value="getData"/>
 			<item value="print"/>
 			<item value="sysout"/>
-			<item value="array"/>
-			<item value="socket"/>
-			<item value="list"/>
-			<item value="buffer"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="522"/>
-		<item key="DIALOG_Y_ORIGIN" value="253"/>
+		<item key="DIALOG_X_ORIGIN" value="484"/>
+		<item key="DIALOG_Y_ORIGIN" value="245"/>
 		<item key="DIALOG_WIDTH" value="369"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
