@@ -12,11 +12,11 @@
 	
 	 <resultMap type="emp.dto.EmpDTO" id="listSelect" autoMapping="true">
 		<association property="depDTO" javaType="dep.dto.DepDTO">
-			<result column="memberName" property="memberName"/>
+			<result column="depName" property="depName"/>
 		</association>
 	</resultMap>
 
-	<select id="list" parameterType="emp.dto.PageDTO" resultMap="listSelect">
+<!-- 	<select id="list" parameterType="emp.dto.PageDTO" resultMap="listSelect">
 	<![CDATA[ 
 		SELECT b.*
 		FROM(SELECT rownum AS rm, a.*
@@ -25,7 +25,7 @@
 			WHERE b.rm>=#{startRow} AND b.rm<=#{endRow}
 		]]>
 	</select>
-
+ -->
 	
 
 </mapper>
