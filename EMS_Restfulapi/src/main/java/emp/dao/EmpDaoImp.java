@@ -9,6 +9,15 @@ import emp.dto.PageDTO;
 
 public class EmpDaoImp implements EmpDAO{
 	private SqlSessionTemplate sqlSession; // mybatis 
+	
+	public EmpDaoImp() {
+		
+	}
+	
+	public void setSqlSession(SqlSessionTemplate sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
 
 	@Override
 	public int count() {

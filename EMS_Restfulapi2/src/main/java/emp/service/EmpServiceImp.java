@@ -19,12 +19,16 @@ public class EmpServiceImp implements EmpService{
 
 	@Override
 	public int countProcess() {
-		return empDao.count();
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public List<EmpDTO> listProcess(PageDTO pv) {
-		return empDao.list(pv);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+
 
 }

@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- EmpDaoImp 빈 선언 -->
-<!--  	<bean id="empDao" class="emp.dao.EmpDaoImp">
+  	<bean id="empDao" class="emp.dao.EmpDaoImp">
 		<property name="sqlSession" ref="sqlSession" />
-	</bean>  -->
+	</bean>  
 
 	<!-- EmpServiceImp 빈 선언 -->
 	<bean id="empService" class="emp.service.EmpServiceImp">

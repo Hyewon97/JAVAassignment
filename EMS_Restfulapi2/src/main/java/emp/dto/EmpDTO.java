@@ -8,10 +8,9 @@ public class EmpDTO {
 	private int empNum; // 사원 번호
 	private String empName, empEmail, depName; // 사원 이름, 사원 이메일, 부서
 	private char empSex; // 성별
-	
-	/*
-	 * private DepDTO depDTO; private RankDTO rankDTO;
-	 */
+
+	private DepDTO depDTO; // 부서 DTO
+	private RankDTO rankDTO; // 직급 DTO
 	
 	// 생성자
 	public EmpDTO() {
@@ -59,23 +58,23 @@ public class EmpDTO {
 		this.empSex = empSex;
 	}
 
-//	public DepDTO getDepDTO() {
-//		return depDTO;
-//	}
-//
-//	public void setDepDTO(DepDTO depDTO) {
-//		this.depDTO = depDTO;
-//	}
-//
-//	public RankDTO getRankDTO() {
-//		return rankDTO;
-//	}
-//
-//	public void setRankDTO(RankDTO rankDTO) {
-//		this.rankDTO = rankDTO;
-//	}
-//	
-	
+	public DepDTO getDepDTO() {
+		return depDTO;
+	}
+
+	public void setDepDTO(DepDTO depDTO) {
+		this.depDTO = depDTO;
+	}
+
+	public RankDTO getRankDTO() {
+		return rankDTO;
+	}
+
+	public void setRankDTO(RankDTO rankDTO) {
+		this.rankDTO = rankDTO;
+	}
+
+
 	
 	
 

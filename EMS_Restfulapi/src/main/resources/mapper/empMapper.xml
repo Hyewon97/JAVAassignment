@@ -10,11 +10,11 @@
 	</select>
 	
 	
-	<!-- <resultMap type="emp.dto.EmpDTO" id="listSelect" autoMapping="true">
+	 <resultMap type="emp.dto.EmpDTO" id="listSelect" autoMapping="true">
 		<association property="depDTO" javaType="dep.dto.DepDTO">
 			<result column="memberName" property="memberName"/>
 		</association>
-	</resultMap> -->
+	</resultMap>
 
 	<select id="list" parameterType="emp.dto.PageDTO" resultMap="listSelect">
 	<![CDATA[ 
