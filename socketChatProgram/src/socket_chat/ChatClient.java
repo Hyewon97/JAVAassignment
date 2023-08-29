@@ -205,6 +205,7 @@ public class ChatClient implements ActionListener, Runnable {
 
 		System.out.println("센드 파일 메소드 실행, 전송 파일 존재 : " + filePath);
 		
+		// 파일 인풋 스트림 해서 null로 초기화를 하고
 	
 		// try-catch 문 실행되면 연결이 끊어짐
 		// 존재하지 않는 파일이면
@@ -237,8 +238,9 @@ public class ChatClient implements ActionListener, Runnable {
 			dataOut.flush(); // 버퍼 비우기
 
 		} catch (IOException e) {
+			
 			e.printStackTrace();
-		}
+		} // 파이널로 파일 close를 하면 되지 않을까
 		
 		
 		
