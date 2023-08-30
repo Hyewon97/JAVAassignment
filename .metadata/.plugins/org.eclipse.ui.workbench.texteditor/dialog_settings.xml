@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="spring-jdbc"/>
+		<item key="selection" value="inter"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="inter"/>
+			<item value="intersector"/>
+			<item value="save"/>
+			<item value="spring-test"/>
+			<item value="mssql-jdbc"/>
 			<item value="spring-jdbc"/>
+			<item value="mybatis-spring"/>
 			<item value="org.springframework"/>
 			<item value="utf-8"/>
 			<item value="groupid"/>
@@ -17,12 +23,6 @@
 			<item value="buffer"/>
 			<item value="buffer."/>
 			<item value="run"/>
-			<item value="send"/>
-			<item value="actionper"/>
-			<item value="actionperfomed"/>
-			<item value="action"/>
-			<item value="down"/>
-			<item value="if"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

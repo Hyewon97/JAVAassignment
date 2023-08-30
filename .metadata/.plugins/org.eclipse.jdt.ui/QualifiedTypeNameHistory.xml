@@ -20,7 +20,22 @@
     <fullyQualifiedTypeName name="java.net.InetAddress"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="emp.dto.EmpDTO"/>
     <fullyQualifiedTypeName name="dep.dto.DepDTO"/>
     <fullyQualifiedTypeName name="rank.dto.RankDTO"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
+    <fullyQualifiedTypeName name="emp.dao.EmpDaoImp"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxDatatypes.Object"/>
+    <fullyQualifiedTypeName name="antlr.collections.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="EmpInfo.dto.EmpInfoDTO"/>
+    <fullyQualifiedTypeName name="EmpInfo.dao.EmpInfoImp"/>
+    <fullyQualifiedTypeName name="DepInfo.dto.DepInfoDTO"/>
+    <fullyQualifiedTypeName name="RankInfo.dto.RankInfoDTO"/>
+    <fullyQualifiedTypeName name="EmpInfo.service.EmpInfoService"/>
+    <fullyQualifiedTypeName name="EmpInfo.dao.EmpInfoDAO"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="javax.inject.Inject"/>
 </qualifiedTypeNameHistroy>
