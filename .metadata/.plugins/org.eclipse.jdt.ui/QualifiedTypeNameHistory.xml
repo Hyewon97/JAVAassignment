@@ -38,4 +38,5 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="javax.inject.Inject"/>
+    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
 </qualifiedTypeNameHistroy>

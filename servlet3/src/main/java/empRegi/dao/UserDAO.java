@@ -10,15 +10,15 @@ import empRegi.model.User;
 public class UserDAO {
 
 	// db url
-	String url = "jdbc:sqlserver://192.168.50.107:1433;databaseName=hw_db;encrypt=true;trustServerCertificate=true;characterEncoding=UTF-8;serverTimezone=UTC";
+	java.lang.String url = "jdbc:sqlserver://192.168.50.107:1433;databaseName=hw_db;encrypt=true;trustServerCertificate=true;characterEncoding=UTF-8;serverTimezone=UTC";
 
 
 	// sql문
-	String INSERT_USERS_SQL = "insert into EmsUsers (name, email, department) " + "values(?, ?, ?)";
-	String SELECT_ALL_USERS = "select * from EmsUsers";
-	String DELETE_USERS_SQL = "delete from EmsUsers where empNum = ?";
-	String SELECT_USER_BY_empNum = "select empNum, name, email, department from EmsUsers where empNum=?";
-	String UPDATE_USERS_SQL = "update EmsUsers set name = ?,email= ?, department =? where empNum = ?";
+	java.lang.String INSERT_USERS_SQL = "insert into EmsUsers (name, email, department) " + "values(?, ?, ?)";
+	java.lang.String SELECT_ALL_USERS = "select * from EmsUsers";
+	java.lang.String DELETE_USERS_SQL = "delete from EmsUsers where empNum = ?";
+	java.lang.String SELECT_USER_BY_empNum = "select empNum, name, email, department from EmsUsers where empNum=?";
+	java.lang.String UPDATE_USERS_SQL = "update EmsUsers set name = ?,email= ?, department =? where empNum = ?";
 
 	// 생성자 선언
 	public UserDAO() {
@@ -69,9 +69,9 @@ public class UserDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				String name = rs.getString("name");
-				String email = rs.getString("email");
-				String department = rs.getString("department");
+				java.lang.String name = rs.getString("name");
+				java.lang.String email = rs.getString("email");
+				java.lang.String department = rs.getString("department");
 				user = new User(empNum, name, email, department);
 			}
 		} catch (SQLException e) {
@@ -94,9 +94,9 @@ public class UserDAO {
 			// 값이 있으면 해당되는 정보 출력
 			while (rs.next()) {
 				int empNum = rs.getInt("empNum");
-				String name = rs.getString("name");
-				String email = rs.getString("email");
-				String department = rs.getString("department");
+				java.lang.String name = rs.getString("name");
+				java.lang.String email = rs.getString("email");
+				java.lang.String department = rs.getString("department");
 				users.add(new User(empNum, name, email, department));
 			}
 		} catch (SQLException e) {

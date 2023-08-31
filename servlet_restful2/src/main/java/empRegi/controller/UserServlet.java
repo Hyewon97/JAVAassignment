@@ -120,17 +120,5 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void getUser(HttpServletRequest request, HttpServletResponse response, int empNum)
-            throws SQLException, IOException {
-        User user = userDAO.selectUser(empNum);
-        if (user != null) {
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(gson.toJson(user));
-        } else {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            response.getWriter().print("User not found.");
-        }
-        response.getWriter().close();
-    }
+  
 }

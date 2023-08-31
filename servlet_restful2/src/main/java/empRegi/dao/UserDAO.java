@@ -47,12 +47,16 @@ public class UserDAO {
         }
     }
 
-    // 특정 사용자를 db에서 조회, 리스트로 반환
+    // 특정 사용자를 db에서 조회
     public User selectUser(int empNum) {
         User user = null;
+        
+        // db 연동
         try (Connection connection = getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_empNum);) {
             preparedStatement.setInt(1, empNum);
+            
+            // 쿼리 실행
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {

@@ -116,3 +116,15 @@ public class UserServlet extends HttpServlet {
 		response.sendRedirect("list");
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
