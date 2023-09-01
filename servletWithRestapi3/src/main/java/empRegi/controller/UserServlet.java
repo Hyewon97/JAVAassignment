@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,17 +22,22 @@ public class UserServlet extends HttpServlet {
 
 	private UserDAO userDAO = new UserDAO();
 	private Gson gson = new Gson(); // json 라이브러리 사용. java Object <-> Json
-	
-	
 
 	// post, 사용자 새로 등록
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String requestURI = request.getRequestURI(); // URI 요청, 문자열로 저장
-		String resourcePath = requestURI.substring(request.getContextPath().length() + "/users".length()); // 가져온 URI에서 (프로젝트 Path + /users) 부터 끝까지 잘라서 문자열  resourcePath에 저장
+		String resourcePath = requestURI.substring(request.getContextPath().length() + "/users".length()); // 가져온 URI에서
+																											// (프로젝트
+																											// Path +
+																											// /users)
+																											// 부터 끝까지
+																											// 잘라서 문자열
+																											// resourcePath에
+																											// 저장
 
 		try {
-			if (resourcePath.isEmpty() || resourcePath.equals("/")) { // resourcePath가 없거나 '/'면 
+			if (resourcePath.isEmpty() || resourcePath.equals("/")) { // resourcePath가 없거나 '/'면
 				createUser(request, response); // 새로운 사용자 등록 // 프소트맨 테스트 > http://localhost:8090/servlet/users/
 												// {"name":"테테테테","email":"test@2naver.com","department":"경영"}
 			} else {
@@ -44,7 +50,7 @@ public class UserServlet extends HttpServlet {
 		}
 	}
 
-	// get, (전체, 선택) 사용자 조회 
+	// get, (전체, 선택) 사용자 조회
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String requestURI = request.getRequestURI();
@@ -53,9 +59,25 @@ public class UserServlet extends HttpServlet {
 		try {
 			if (resourcePath.isEmpty() || resourcePath.equals("/")) {
 				listUsers(request, response); // 모든 사용자 조회 // 포스트맨 테스트 > http://localhost:8090/servlet/users/
-			} else if (resourcePath.matches("/\\d+")) {
+
+				// forward
+				/*
+				 * RequestDispatcher dispatcher =
+				 * request.getRequestDispatcher("/WEB-INF/views/user-list.jsp");
+				 * dispatcher.forward(request, response);
+				 */
+
+			} else if (resourcePath.matches("/\\d+")) { // 변호가 있으면
 				int empNum = Integer.parseInt(resourcePath.substring(1));
 				getUser(request, response, empNum); // 특정 사용자 조회 // 포스트맨 테스트 > http://localhost:8090/servlet/users/ 48
+
+				// forward
+				/*
+				 * RequestDispatcher dispatcher =
+				 * request.getRequestDispatcher("/WEB-INF/views/user-form.jsp");
+				 * dispatcher.forward(request, response);
+				 */
+
 			} else {
 				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 				response.getWriter().print("Endpoint not found.");
@@ -121,7 +143,11 @@ public class UserServlet extends HttpServlet {
 	// 새 사용자 생성
 	private void createUser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
-		String requestBody = request.getReader().lines().reduce("", (accumulator, actual) -> accumulator + actual); // 이 부분 잘 해석이 안되는데
+		String requestBody = request.getReader().lines().reduce("", (accumulator, actual) -> accumulator + actual); // 이
+																													// 부분
+																													// 잘
+																													// 해석이
+																													// 안되는데
 		User newUser = gson.fromJson(requestBody, User.class);
 		userDAO.insertUser(newUser);
 		response.setStatus(HttpServletResponse.SC_CREATED);
@@ -141,7 +167,7 @@ public class UserServlet extends HttpServlet {
 			throws SQLException, IOException {
 		User user = userDAO.selectUser(empNum); // emmpNum에 해당하는 사용자의 정보를 user에 저장
 		if (user != null) {
-			response.setContentType("application/json"); 
+			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(gson.toJson(user));
 		} else {

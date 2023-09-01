@@ -4,8 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import empRegi.model.User;
+
 public class UserDAO {
 
 	// db url
@@ -56,7 +56,7 @@ public class UserDAO {
 	// 유저 선택
 	public User selectUser(int empNum) {
 		User user = null;
-		
+
 		// DB 연동
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_empNum);) {
@@ -80,10 +80,10 @@ public class UserDAO {
 	// 모든 유저 선택
 	public List<User> selectAllUsers() {
 		List<User> users = new ArrayList<>();
-		
+
 		// db 연동
 		try (Connection connection = getConnection();
-			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			// 값이 있으면 해당되는 정보 출력
@@ -99,7 +99,7 @@ public class UserDAO {
 		}
 		return users;
 	}
-	
+
 	// 정보 삭제
 	public boolean deleteUser(int empNum) throws SQLException {
 		boolean rowDeleted;
@@ -110,8 +110,8 @@ public class UserDAO {
 		}
 		return rowDeleted;
 	}
-	
-	//정보 수정
+
+	// 정보 수정
 	public boolean updateUser(User user) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
