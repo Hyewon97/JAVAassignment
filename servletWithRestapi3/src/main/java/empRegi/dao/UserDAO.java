@@ -13,7 +13,7 @@ public class UserDAO {
 
 	// sql문
 	java.lang.String INSERT_USERS_SQL = "insert into EmsUsers (name, email, department) " + "values(?, ?, ?)";
-	java.lang.String SELECT_ALL_USERS = "select * from EmsUsers order by empNum desc";
+	java.lang.String SELECT_ALL_USERS = "select * from EmsUsers order by empNum desc"; // empNum 기준 내림차순 정렬
 	java.lang.String DELETE_USERS_SQL = "delete from EmsUsers where empNum = ?";
 	java.lang.String SELECT_USER_BY_empNum = "select empNum, name, email, department from EmsUsers where empNum=?";
 	java.lang.String UPDATE_USERS_SQL = "update EmsUsers set name = ?,email= ?, department =? where empNum = ?";
