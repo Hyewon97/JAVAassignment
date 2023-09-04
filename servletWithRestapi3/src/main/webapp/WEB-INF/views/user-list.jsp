@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%
+	String kkk = (String)request.getAttribute("kkk");
+%>
 <html>
 <head>
     <title>인력 관리 시스템</title>
@@ -19,11 +21,13 @@
 /* onLoad 처리.. 데이터 받아서 리스트로 뿌려줌 */
 window.onload = function(){
 	$(document).ready(function() {
+		/*
 		$.ajax({
 		    url: "./users/", // 요청할 url
 		    type: "get", // 통신 타입 설정
 		    dataType: "json",
 		    success: function (data) {
+		    	console.log("111111111111")
 		        var userListTable = $("#user-list-table"); // 유저 정보 출력할 list선언
 
 		        userListTable.find("tr:gt(0)").remove(); // 첫 번째 행 제외 모두 제거
@@ -40,11 +44,12 @@ window.onload = function(){
 		            userListTable.append(newRow);
 		        });
 		    },
-		    error: function () {
+		    error: function (data) {
+		    	console.log("data = ", data)
 		        alert("Error fetching data.");
 		    }
 		});
-		
+		*/
 	});
 	
 }
@@ -52,7 +57,7 @@ window.onload = function(){
 
 </script>
 <!-- 스크립트 추가 끝 -->
-
+	<input type="text" value="${kkk}">
     <center>
         <h1>인력 관리 시스템</h1>
         <h3>

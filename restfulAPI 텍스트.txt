@@ -1,0 +1,27 @@
+
+get 요청
+모든 사원 조회 : http://localhost:8090/servlet/users/ 
+특정 사원 조회 : http://localhost:8090/servlet/users/48
+
+
+post 요청
+신규 사원 등록
+http://localhost:8090/servlet/users/
+{"name":"테테테테","email":"test@2naver.com","department":"경영"}
+
+
+put 수정
+기존 사원 수정
+http://localhost:8090/servlet/users/67
+{"name":"수정정","email":"test@2naver.com","department":"경영"}
+
+get
+post 
+put
+delete
+
+ajax를 사용하기
+service를 사용해야 한다
+
+//////////////
+자바 버전 1.6.jdk 에서 11로 바꿨는데 오류뜨면 1.6으로 다시 바꾸자

@@ -18,7 +18,7 @@ public class SQLServer {
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		conn = DriverManager.getConnection(url, "phw", "1111");
 		stmt = conn.createStatement();
-		rs = stmt.executeQuery("SELECT * FROM empTable");
+		rs = stmt.executeQuery("SELECT * FROM EmsUsers");
 		while (rs.next()) {
 			String field1 = rs.getString("name");
 			String field2 = rs.getString("email");

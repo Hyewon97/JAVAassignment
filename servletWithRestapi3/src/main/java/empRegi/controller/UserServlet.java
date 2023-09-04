@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,17 +56,20 @@ public class UserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String requestURI = request.getRequestURI();
 		String resourcePath = requestURI.substring(request.getContextPath().length() + "/users".length());
-
+		
 		try {
 			if (resourcePath.isEmpty() || resourcePath.equals("/")) {
-				listUsers(request, response); // 모든 사용자 조회 // 포스트맨 테스트 > http://localhost:8090/servlet/users/
+				List<User> kkk = listUsers(request, response); // 모든 사용자 조회 // 포스트맨 테스트 > http://localhost:8090/servlet/users/
 
+				System.out.println("kkk" + kkk);
+				
+				request.setAttribute("kkk", kkk); // 리스트로 값을 넘김
+				
 				// forward
-				/*
-				 * RequestDispatcher dispatcher =
-				 * request.getRequestDispatcher("/WEB-INF/views/user-list.jsp");
-				 * dispatcher.forward(request, response);
-				 */
+				ServletContext app = this.getServletContext();
+				  RequestDispatcher dispatcher = app.getRequestDispatcher("/WEB-INF/views/user-list.jsp");
+				  dispatcher.forward(request, response);
+				 
 
 			} else if (resourcePath.matches("/\\d+")) { // 변호가 있으면
 				int empNum = Integer.parseInt(resourcePath.substring(1));
@@ -155,11 +159,12 @@ public class UserServlet extends HttpServlet {
 	}
 
 	// 모든 사용자 조회, json 형식으로 반환
-	private void listUsers(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	private List<User> listUsers(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		List<User> listUser = userDAO.selectAllUsers(); // DB에 있는 모든 사용자들의 정보를 List에 넣음
 		response.setContentType("application/json"); // HttpServletResponse 객체로 Json 데이터 반환
 		response.setCharacterEncoding("UTF-8"); // UTF-8로 인코딩
 		response.getWriter().write(gson.toJson(listUser)); // listUser를 object->Json으로 매핑
+		return listUser;
 	}
 
 	// 특정 사용자 조회, json 형식으로 반환

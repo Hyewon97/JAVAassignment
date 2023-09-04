@@ -39,4 +39,6 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="javax.inject.Inject"/>
     <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
 </qualifiedTypeNameHistroy>
