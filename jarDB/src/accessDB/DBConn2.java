@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 // DB 연결, 싱글톤 패턴
-public class DBConn {
+public class DBConn2 {
 
 	private static Connection dbConn;
 
@@ -26,19 +26,28 @@ public class DBConn {
 		prop.load(new java.io.BufferedInputStream(fis));
 
 		// DB 연동
-		String DB_url = prop.getProperty("db_url"); // DB url 
+		String DB_ip = prop.getProperty("db_ip"); // DB ip
+		String DB_port = prop.getProperty("db_port"); // DB port
+		String DB_name = prop.getProperty("db_name"); // DB 이름
 		String DB_user = prop.getProperty("db_user"); // DB 사용자
 		String DB_password = prop.getProperty("db_password"); // DB 비번
 
 		// DB 연결하기
 		if (dbConn == null) {// dbConn이 null이면 DB를 연결한다
-			// System.out.println("url : " + DB_url); // url 조합 확인
+			// url 주소는 properties에서 받아온 값으로 설정
+			String url = "jdbc:sqlserver://" + DB_ip + ":" + DB_port + ";" + "databaseName=" + DB_name
+					+ ";encrypt=true;trustServerCertificate=true;characterEncoding=UTF-8;serverTimezone=UTC";
+			
+			 System.out.println("url : " + url); // url 조합 확인
+			
+			String user = DB_user;
+			String pass = DB_password;
 			
 			// SQL Server JDBC 드라이버
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			
 			// DB 연결
-			dbConn = DriverManager.getConnection(DB_url, DB_user, DB_password);
+			dbConn = DriverManager.getConnection(url, user, pass);
 		}
 
 		return dbConn;

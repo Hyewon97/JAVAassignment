@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 public class Test002
 {
+	// 싱글톤 사용 에제..
 	public static void main(String[] args)
 	{
 	
