@@ -1,6 +1,5 @@
 package users;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,9 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-import accessDB2.DBConn;
+import accessDB.DBConn;
 
 public class UsersService {
 
@@ -55,8 +53,13 @@ public class UsersService {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql); // sql문 받아서 처리
 
+			// System.out.println("sql: "+sql);
+
 			while (rs.next()) {
 				int empNum = rs.getInt("empNum");
+
+				// System.out.println("empNum"+empNum);
+
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String department = rs.getString("department");
@@ -66,6 +69,7 @@ public class UsersService {
 			}
 		} catch (SQLException e) {
 			System.out.println(e.toString());
+			System.out.println("오류");
 		}
 		return user;
 	}
@@ -115,39 +119,4 @@ public class UsersService {
 		}
 
 	}
-
-	////////////// main문.. 테스트용
-	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
-
-		// config 파일에 있는 sql 문 가지고 오기
-		// properties 값 가져오기
-		String propFile = "config/config.properties"; // config 파일 위치 알려줌
-		Properties prop = new Properties();
-		// 프로퍼티 파일 스트림에 담기
-		FileInputStream fis = new FileInputStream(propFile);
-		// 프로퍼티 파일 로딩
-		prop.load(new java.io.BufferedInputStream(fis));
-
-		String SELECT_ALL_USERS = prop.getProperty("select_all_users"); // 전체 정보 조회
-		String SELECT_USER_BY_empNum = prop.getProperty("select_user_by_empNum"); // 특정 정보 조회
-		String INSERT_USERS_SQL = prop.getProperty("insert_users_sql"); // 정보 삽입
-		String DELETE_USERS_SQL = prop.getProperty("delete_users_sql"); // 정보 삭제
-		String UPDATE_USERS_SQL = prop.getProperty("update_users_sql"); // 정보 삭제
-
-		/*
-		 * System.out.println("SELECT_ALL_USERS 값 확인 : " + SELECT_ALL_USERS);
-		 * System.out.println("SELECT_USER_BY_empNum 값 확인 : " + SELECT_USER_BY_empNum);
-		 * System.out.println("INSERT_USERS_SQL 값 확인 : " + INSERT_USERS_SQL);
-		 * System.out.println("DELETE_USERS_SQL 값 확인 : " + DELETE_USERS_SQL);
-		 * System.out.println("UPDATE_USERS_SQL 값 확인 : " + UPDATE_USERS_SQL);
-		 */
-
-		// selectAllUsers(SELECT_ALL_USERS); // 값 테스트
-		// selectUser(SELECT_USER_BY_empNum);
-		deleteUser(DELETE_USERS_SQL);
-//		insertUser(INSERT_USERS_SQL);
-		
-
-	}
-
 }
