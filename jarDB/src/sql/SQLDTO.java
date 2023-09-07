@@ -1,7 +1,5 @@
 package sql;
 
-import java.io.IOException;
-
 public class SQLDTO {
 	
 	public static String SELECT_ALL_USERS; // 전체 데이터 조회

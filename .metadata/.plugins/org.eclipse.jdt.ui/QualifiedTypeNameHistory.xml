@@ -40,7 +40,6 @@
     <fullyQualifiedTypeName name="javax.inject.Inject"/>
     <fullyQualifiedTypeName name="com.google.gson.Gson"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
-    <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
     <fullyQualifiedTypeName name="java.util.Properties"/>
@@ -49,14 +48,15 @@
     <fullyQualifiedTypeName name="service.ServiceDTO"/>
     <fullyQualifiedTypeName name="accessDB2.UserService"/>
     <fullyQualifiedTypeName name="users.UsersService2"/>
-    <fullyQualifiedTypeName name="users.UsersService"/>
     <fullyQualifiedTypeName name="service.ServiceDTO2"/>
     <fullyQualifiedTypeName name="service.ServiceConfig"/>
-    <fullyQualifiedTypeName name="sql.SQLDTO"/>
     <fullyQualifiedTypeName name="test.Main"/>
-    <fullyQualifiedTypeName name="sql.SQLConfig"/>
     <fullyQualifiedTypeName name="sql.SQLTest"/>
     <fullyQualifiedTypeName name="accessDB.DBConn"/>
     <fullyQualifiedTypeName name="impPack.ImTest"/>
     <fullyQualifiedTypeName name="pack1.Test1"/>
+    <fullyQualifiedTypeName name="sql.SQLConfig"/>
+    <fullyQualifiedTypeName name="sql.SQLDTO"/>
+    <fullyQualifiedTypeName name="users.UsersService"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
 </qualifiedTypeNameHistroy>

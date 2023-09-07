@@ -8,9 +8,8 @@ public class SQLConfig {
 
 	public static void main(String[] args){
 
-		// config 파일에 있는 sql 문 가지고 오기
-		// properties 값 가져오기
-		String propFile = "config/config.properties"; // config 파일 위치 알려줌
+		// properties (외부파일 값 읽어오기)
+		String propFile = "config/config.properties"; // config 파일 위치 알려줌, 위치는 프로젝트 내의 'config' 폴더 안에 'config.properties' 파일
 		Properties prop = new Properties();
 		
 		// DTO 호출
