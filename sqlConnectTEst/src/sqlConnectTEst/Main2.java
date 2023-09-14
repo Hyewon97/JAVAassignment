@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import importTest.ImportTest;
-import sql.SQLConfig;
 import sql.SQLDTO;
 import users.UsersService;
 
@@ -15,7 +14,7 @@ public class Main2 {
 		ImportTest test = new ImportTest();
 		test.importTest();
 
-		SQLConfig.main(args);
+		//SQLConfig.main(args);
 
 		SQLDTO dto = new SQLDTO();
 		UsersService users = new UsersService();

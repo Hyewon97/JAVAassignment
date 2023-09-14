@@ -11,7 +11,7 @@
 	<item key="org.eclipse.jdt.ui.last.selected.create.moduleinfo.comments" value="false"/>
 	<item key="org.eclipse.jdt.ui.last.selected.create.moduleinfo" value="false"/>
 	<item key="CallHierarchyViewPart.ratio0" value="500"/>
-	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Program Files (x86)\Java\jdk1.6.0_07\jre\lib\ext"/>
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\study\assignment\sqlConnectTEst\src"/>
 	<section name="JavaElementSearchActions">
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
@@ -38,7 +38,7 @@
 	</section>
 	<section name="OptionalMessageDialog.hide.">
 		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
-		<item key="EmptyDefaultAssistCategory" value="false"/>
+		<item key="EmptyDefaultAssistCategory" value="true"/>
 	</section>
 	<section name="NewClassWizardPage">
 		<item key="create_constructor" value="false"/>
@@ -172,6 +172,7 @@
 		<item key="JarManifestWizardPage.SEAL_JAR" value="false"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
 			<item value="C:\Users\qkrgp\OneDrive\바탕 화면\tmp\자르\jarDB.jar"/>
+			<item value="C:\Users\qkrgp\OneDrive\바탕 화면\tmp\자르\jarDB2.jar"/>
 			<item value="C:\Users\qkrgp\OneDrive\바탕 화면\tmp\자르\TestJar.jar"/>
 			<item value="C:\Users\qkrgp\OneDrive\바탕 화면\tmp\TestJar.jar"/>
 			<item value="C:\Users\qkrgp\OneDrive\바탕 화면\tmp\자르\test.jar"/>
