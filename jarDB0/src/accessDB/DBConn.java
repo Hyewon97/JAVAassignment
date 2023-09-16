@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-// DB 연결, 싱글톤 패턴
+// DB 연결
 public class DBConn {
 
 	private static Connection dbConn;
@@ -15,7 +15,7 @@ public class DBConn {
 	public static Connection getConnection() throws ClassNotFoundException, SQLException, IOException {
 
 		// properties 값 가져오기
-		String propFile = "config/config.properties"; // config 파일 위치 알려줌
+		String propFile = "config/config.properties"; // config 파일 위치 알려줌, 위치는 프로젝트 내의 'config' 폴더 안에 'config.properties' 파일
 
 		Properties prop = new Properties();
 
@@ -26,9 +26,10 @@ public class DBConn {
 		prop.load(new java.io.BufferedInputStream(fis));
 
 		// DB 연동
-		String DB_url = prop.getProperty("db_url"); // DB url 
-		String DB_user = prop.getProperty("db_user"); // DB 사용자
-		String DB_password = prop.getProperty("db_password"); // DB 비번
+		// config.properties 파일에 있는 키 값에 해당되는 값을 읽어서 저장
+		String DB_url = prop.getProperty("db_url"); // DB url, 키 값 db_url
+		String DB_user = prop.getProperty("db_user"); // DB 사용자, 키 값 db_user
+		String DB_password = prop.getProperty("db_password"); // DB 비번, 키 값 db_password
 
 		// DB 연결하기
 		if (dbConn == null) {// dbConn이 null이면 DB를 연결한다

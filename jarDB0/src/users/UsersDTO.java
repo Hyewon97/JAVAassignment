@@ -1,5 +1,7 @@
 package users;
-
+/*
+ * 사용할 테이블에 있는 속성명 정의, EmsUsers 테이블
+ */
 public class UsersDTO {
 	private int empNum; // 사원번호
 	private String name; // 이름
@@ -56,7 +58,5 @@ public class UsersDTO {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	
-	
 
 }

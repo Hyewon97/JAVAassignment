@@ -1,8 +1,6 @@
-package service;
+package sql;
 
-import java.io.IOException;
-
-public class ServiceDTO {
+public class SQLDTO {
 	
 	public static String SELECT_ALL_USERS; // 전체 데이터 조회
 	public static String SELECT_USER_BY_empNum; // 특정 데이터 조회
@@ -11,7 +9,7 @@ public class ServiceDTO {
 	public static String UPDATE_USERS_SQL; // 정보 수정
 	
 	// 생성자 선언
-	public ServiceDTO() {
+	public SQLDTO() {
 		
 	}
 

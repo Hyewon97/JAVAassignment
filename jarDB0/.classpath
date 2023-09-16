@@ -6,5 +6,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jdk1.6.0_07/jre/lib/ext/mssql-jdbc-12.4.0.jre11.jar"/>
+>>>>>>> 1bf51f32a44c7114cdca790a37b4b71d28faf01b
 	<classpathentry kind="output" path="bin"/>
 </classpath>
