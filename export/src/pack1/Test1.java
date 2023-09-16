@@ -2,7 +2,7 @@ package pack1;
 
 public class Test1 {
 
-	public int calc(int a) {
-		return a+10;
+	public void printTest() {
+		System.out.println("라이브러리 테스트");
 	}
 }
