@@ -14,13 +14,6 @@ public class Main01 {
 	static double mb = 1024.0 * 1024.0;
 	static double gb = 1024.0 * 1024.0 * 1024;
 
-	public Main01() {
-		showOSBean();
-		showMemory();
-		showDisk();
-		systemMemory();
-		showCPU();
-	}
 
 	public void showOSBean( ){
 
@@ -91,6 +84,7 @@ public class Main01 {
 	public static void main(String[] args) {
 
 		Main01 test = new Main01();
+		test.systemMemory();
 
 
 	}

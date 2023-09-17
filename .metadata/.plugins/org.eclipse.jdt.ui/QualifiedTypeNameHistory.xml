@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="chat1.Server"/>
-    <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.Const"/>
-    <fullyQualifiedTypeName name="com.sun.java_cup.internal.runtime.Scanner"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="javax.print.attribute.standard.JobMessageFromOperator"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="users.UsersService"/>
     <fullyQualifiedTypeName name="java.lang.management.OperatingSystemMXBean"/>
     <fullyQualifiedTypeName name="junit.framework.Test"/>
+    <fullyQualifiedTypeName name="test01.CPUMonitorThread"/>
+    <fullyQualifiedTypeName name="test01.MonitorThreads"/>
+    <fullyQualifiedTypeName name="test01.OSInfoThread"/>
 </qualifiedTypeNameHistroy>
