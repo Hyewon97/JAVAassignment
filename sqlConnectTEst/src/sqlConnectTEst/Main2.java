@@ -1,4 +1,4 @@
-package sqlConnectTEst;
+package src.sqlConnectTEst;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package test02;
+package thread;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
@@ -42,7 +42,7 @@ public class RAMMonitorThread extends Thread {
 	                "Non-Heap Memory:\n" +
 	                "  Used: " + (nonHeapMemoryUsage.getUsed() / mb) + " MB\n" +
 	                "  Max: " + (Math.round(nonHeapMemoryUsage.getMax() / mb)) + " MB";
-	        MonitorWebSocketServer.broadcastMessage(ramInfo);
+	       
 			
 			System.out.println("======================================");
 			try {

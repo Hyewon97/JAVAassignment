@@ -1,4 +1,4 @@
-package test02;
+package thread;
 
 import java.io.File;
 
@@ -32,7 +32,7 @@ public class HDDInfoThread extends Thread {
                         "전체 공간: " + (int) (root.getTotalSpace() / gb) + " GB\n" +
                         "사용 가능한 공간: " + (int) (root.getUsableSpace() / gb) + " GB\n" +
                         "사용 중인 공간: " + (int) ((root.getTotalSpace() - root.getUsableSpace()) / gb) + " GB";
-                MonitorWebSocketServer.broadcastMessage(diskInfo);
+               
                
             }
             System.out.println("==========================================");

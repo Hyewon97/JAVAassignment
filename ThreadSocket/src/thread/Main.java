@@ -1,6 +1,6 @@
-package test02;
+package thread;
 
-public class CpuMain01 {
+public class Main {
 
 	public static void main(String[] args) {
 		CPUMonitorThread cpuMonitorThread = new CPUMonitorThread(); // cpu

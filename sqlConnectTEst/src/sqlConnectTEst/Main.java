@@ -1,4 +1,4 @@
-package sqlConnectTEst;
+package src.sqlConnectTEst;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.lang.Runnable"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="java.net.DatagramPacket"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="javax.websocket.Session"/>
     <fullyQualifiedTypeName name="javax.websocket.OnClose"/>
     <fullyQualifiedTypeName name="javax.websocket.CloseReason"/>
+    <fullyQualifiedTypeName name="org.java_websocket.server.WebSocketServer"/>
 </qualifiedTypeNameHistroy>
